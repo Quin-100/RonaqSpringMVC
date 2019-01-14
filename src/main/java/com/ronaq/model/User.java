@@ -1,13 +1,24 @@
 package com.ronaq.model;
 
 import java.sql.Blob;
+import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="USER_DETAILS")
@@ -17,24 +28,61 @@ public class User {
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	
+	@NotEmpty(message="User name is required")
 	private String name;
+	
+	@NotEmpty(message="PAN no is required")
+	@Size(min=10,max=10,message="Enter valid PAN no.")
 	private String pan;
+	
+	@NotEmpty(message="AADHAR no is required")
+	@Size(min=12,max=12,message="Enter valid AADHAR no.")
 	private String aadhar;
+	
+	@NotEmpty(message="Email is required")
+	@Email(message="Enter valid Email")
 	private String email;
+	
+	@NotEmpty(message="Email is required")
 	private String address;
+	
+	@NotEmpty(message="DOB is required")
+	//@Temporal(TemporalType.DATE)
 	private String dob;
+	
+	@NotEmpty(message="Branch is required")
 	private String branch;
+	
+	@NotEmpty(message="State is required")
 	private String state;
+	
+	@NotEmpty(message="Account type is required")
 	private String acctype;
+	
+	@NotEmpty(message="password is required")
+	@Size(min=6,message="Enter min 6 characters")
 	private String password;
-	private byte[] photo;
+	
+	@NotEmpty(message="password is required")
+	@Size(min=6,message="Enter min 6 characters")	
+	@Transient
+	private String repassword;
+	
+	//private byte[] photo;
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="userdetails")	
+	private List<Account> lstAccount ;
+	
+    //private Set<Items> items;	
 	
 	
 	public User() {
 		super();
 	}
+	
 	public User(int id, String name, String pan, String aadhar, String email, String address, String dob, String branch,
-			String state, String acctype, String password, byte[] photo) {
+			String state, String acctype, String password, String repassword, List<Account> lstAccount) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -47,8 +95,10 @@ public class User {
 		this.state = state;
 		this.acctype = acctype;
 		this.password = password;
-		this.photo = photo;
+		this.repassword = repassword;
+		this.lstAccount = lstAccount;
 	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -115,20 +165,34 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public byte[] getPhoto() {
+	
+	public List<Account> getLstAccount() {
+		return lstAccount;
+	}
+	public void setLstAccount(List<Account> lstAccount) {
+		this.lstAccount = lstAccount;
+	}
+	
+	public String getRepassword() {
+		return repassword;
+	}
+	public void setRepassword(String repassword) {
+		this.repassword = repassword;
+	}
+	/*public byte[] getPhoto() {
 		return photo;
 	}
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
-	}
+	}*/
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", pan=" + pan + ", aadhar=" + aadhar + ", email=" + email
 				+ ", address=" + address + ", dob=" + dob + ", branch=" + branch + ", state=" + state + ", acctype="
-				+ acctype + ", password=" + password + ", photo=" + photo + "]";
+				+ acctype + ", password=" + password + ", repassword=" + repassword + ", lstAccount=" + lstAccount
+				+ "]";
 	}
-	
-	
 	
 	
 }

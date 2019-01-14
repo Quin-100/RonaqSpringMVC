@@ -1,5 +1,7 @@
 package com.ronaq.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,7 @@ import com.ronaq.service.IUserService;
 
 @Controller
 public class UserLogin {
-private IUserService userService;	
+	private IUserService userService;
 	
 	@Autowired
 	public void setUserService(IUserService userService) {
@@ -35,20 +37,20 @@ private IUserService userService;
 			if (!result.hasErrors()) {			
 				if (!l.getUsername().isEmpty()) {
 						// new user, add it		
-						//User user = handleFileUpload(result, fileUpload, u);					
-						System.out.println("come to login"+l);
-						boolean status = this.userService.chkUser(l);
+						//User user = handleFileUpload(result, fileUpload, u);
+						boolean status = this.userService.chkUserForLogin(l);
 						if(status) {
-							return "success";
+							
+							return "dashboard";
 						}
 						else {
-							return "redirect:/login";
+							return "login";
 						}
 				} else {
 						// existing person, call update
 						//this.employeeDetailsService.updateEmployeeDetails(p);
 				}
-				return "redirect:/login";
+				//return "redirect:/login";
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

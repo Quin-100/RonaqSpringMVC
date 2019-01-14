@@ -38,7 +38,7 @@ prefix="form" %>
                         <div class="row">                        
                             <div class="col-md-12">
                                 <div class="form-group">
-                                	<form:input path="username" cssClass="form-input" placeholder="Userame" id="name"/>
+                                	<form:input path="username" cssClass="form-input" placeholder="Username" id="name"/>
 									<form:errors path="username" cssClass="errors"></form:errors>                                   
                                 </div>
                             </div>

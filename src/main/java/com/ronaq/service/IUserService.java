@@ -5,6 +5,7 @@ import com.ronaq.model.User;
 
 public interface IUserService {
 
+	public boolean chkUserForRegistration(User user);
 	public void createUser(User user);
-	public boolean chkUser(Login login);
+	public boolean chkUserForLogin(Login login);
 }

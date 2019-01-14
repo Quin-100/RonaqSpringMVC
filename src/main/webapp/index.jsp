@@ -49,15 +49,7 @@ prefix="form" %>
 							<li><a href="#">About Us</a></li>
 							<li><a href="#">Services</a></li>
 							<li><a href="#">About Us</a></li>
-						</ul>
-						<div class="drop-holder visible-sm visible-xs">
-							<span>Follow Us</span>
-							<ul class="social-networks">
-								<li><a class="fa fa-github" href="#"></a></li>
-								<li><a class="fa fa-twitter" href="#"></a></li>
-								<li><a class="fa fa-facebook" href="#"></a></li>
-							</ul>
-						</div>
+						</ul>						
 					</div>
 				</nav>
 			</div>

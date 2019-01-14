@@ -31,7 +31,8 @@
 		<property name="annotatedClasses">
 			<!-- Map all the annotated class with @Entity -->
 			<list>
-				 <value>com.ronaq.model.User</value> 	
+				 <value>com.ronaq.model.User</value> 
+				 <value>com.ronaq.model.Account</value>	
 				 <value>com.ronaq.model.Login</value>			
 			</list>
 		</property>

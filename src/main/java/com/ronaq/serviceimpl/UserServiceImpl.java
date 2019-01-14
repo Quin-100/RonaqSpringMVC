@@ -19,6 +19,11 @@ public class UserServiceImpl implements IUserService{
 		this.userDao = userDao;
 	}
 	
+
+	public boolean chkUserForRegistration(User user) {
+		// TODO Auto-generated method stub
+		return userDao.chkUserForRegistration(user);
+	}
 	
 	@Transactional
 	public void createUser(User user) {
@@ -27,10 +32,12 @@ public class UserServiceImpl implements IUserService{
 	}
 
 
-	public boolean chkUser(Login login) {
+	public boolean chkUserForLogin(Login login) {
 		// TODO Auto-generated method stub
-		return userDao.chkUser(login);
+		return userDao.chkUserForLogin(login);
 	}
+
+
 
 	
 

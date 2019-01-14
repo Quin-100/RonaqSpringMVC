@@ -29,30 +29,19 @@ public class UserDaoImpl implements IUserDao {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
-	public void createUser(User user) {
+	
+	public boolean chkUserForRegistration(User user) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.openSession();
 		tx = session.beginTransaction();
-		session.save(user);
-		tx.commit();
-		session.close();
-		logger.info("User details saved successfully, User Details="+ user);
-	}
-
-	public boolean chkUser(Login login) {
-		// TODO Auto-generated method stub
-		logger.info(login.getUsername() + login.getPassword());
-		Session session = this.sessionFactory.openSession();
-		tx = session.beginTransaction();
-		Query query = session.createQuery("from User u where u.name=:name and u.password=:password");
-		query.setString("name", login.getUsername());
-		query.setString("password", login.getPassword());
+		Query query = session.createQuery("from User u where u.email=:email and u.acctype=:acctype");
+		query.setString("email", user.getEmail());
+		query.setString("acctype", user.getAcctype());
 		List<User> u = query.list();
 		//session.save(user);
 		tx.commit();
 		session.close();
-		logger.info("User Details="+ login);
+		logger.info("User Details="+ user);
 		
 		if(u.size()>0) {
 			return true;
@@ -61,6 +50,40 @@ public class UserDaoImpl implements IUserDao {
 			return false;
 		}
 	}
+
+	public void createUser(User user) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.openSession();
+		tx = session.beginTransaction();
+		int id = (Integer) session.save(user);
+		//httpsession.setAttribute("userid", id);
+		tx.commit();
+		session.close();
+		logger.info("User details saved successfully, User Details="+ user);
+	}
+
+	public boolean chkUserForLogin(Login login) {
+		// TODO Auto-generated method stub		
+		Session session = this.sessionFactory.openSession();
+		tx = session.beginTransaction();
+		Query query = session.createQuery("from User u where u.email=:email and u.password=:password");
+		query.setString("email", login.getUsername());
+		query.setString("password", login.getPassword());
+		List<User> u = query.list();
+		//session.save(user);
+		tx.commit();
+		session.close();
+		logger.info("User Details="+ login);		
+		
+		if(u.size()>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	
 
 	
 

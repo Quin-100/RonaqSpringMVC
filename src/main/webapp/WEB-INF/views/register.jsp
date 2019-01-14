@@ -20,8 +20,11 @@ prefix="form" %>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->    
-    <!--  --><link href="${pageContext.request.contextPath}/resources/css/register.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/css/register.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!-- Main js -->
+    <link href="${pageContext.request.contextPath}/resources/js/formValidation.js" rel="stylesheet" />
     
     <!-- jquery core js -->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
@@ -40,6 +43,14 @@ prefix="form" %>
             });
         });
      </script>
+     
+     <style>
+		.errors {
+			color: red;
+			font-style: italic;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
 	<c:url var="addAction" value="/user/add" ></c:url>
@@ -54,7 +65,7 @@ prefix="form" %>
                         <div class="row">                        
                             <div class="col-md-6">
                                 <div class="form-group">
-                                	<form:input path="name" cssClass="form-input" placeholder="Your Name" id="name"/>
+                                	<form:input path="name" cssClass="form-input" placeholder="Your Name" id="name" pattern="[a-z A-Z]*"/>
 									<form:errors path="name" cssClass="errors"></form:errors>
 <!--                                     <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/> -->
                                 </div>
@@ -88,8 +99,11 @@ prefix="form" %>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                	<form:input path="acctype" cssClass="form-input" placeholder="Account Type" id="acctype"/>
+                                <div class="form-group">   
+                                	<form:select path="acctype" cssClass="form-input">						                
+						                <form:option selected="selected" value="savings">Savings</form:option>
+						                <form:option value="current">Current</form:option>
+						            </form:select>    
                                     <form:errors path="acctype" cssClass="errors"></form:errors> 
                                 </div>
                             </div>                           
@@ -97,9 +111,8 @@ prefix="form" %>
                         <div class="row">                        
                             <div class="col-md-6">
                                 <div class="form-group">
-                                	<form:select path="state" cssClass="form-input">
-						                <form:option selected="selected" value="select">Select State</form:option>
-						                <form:option value="maharashtra">Maharashtra</form:option>
+                                	<form:select path="state" cssClass="form-input">						               
+						                <form:option selected="selected"  value="maharashtra">Maharashtra</form:option>
 						                <form:option value="kerala">Kerala</form:option>
 						                <form:option value="gujarat">Gujarat</form:option>
 						                <form:option value="punjab">Punjab</form:option>
@@ -110,9 +123,8 @@ prefix="form" %>
                             </div>
                              <div class="col-md-6">
                                 <div class="form-group">
-                                	<form:select path="branch" cssClass="form-input">
-						                <form:option selected="selected" value="select">Select Branch</form:option>
-						                <form:option value="maharashtra">Ahmedabad-RNQAH000504</form:option>
+                                	<form:select path="branch" cssClass="form-input">						                
+						                <form:option selected="selected" value="maharashtra">Ahmedabad-RNQAH000504</form:option>
 						                <form:option value="kerala">Pune-RNQPU000506</form:option>
 						                <form:option value="gujarat">Nagpur-RNQNG000508</form:option>
 						                <form:option value="punjab">Vadodra-RNQVD000502</form:option>
@@ -127,6 +139,14 @@ prefix="form" %>
                                 </div>
                             </div>
                         </div> 
+                        <div class="row">
+                        	<div class="col-md-12">
+                        		<div class="form-group">
+                                	<form:input path="email" cssClass="form-input" placeholder="Enter your email" id="email"/>
+                                    <form:errors path="email" cssClass="errors"></form:errors> 
+                                </div>                        	
+                        	</div>
+                        </div>
                         <div class="row">                        
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -137,8 +157,8 @@ prefix="form" %>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                	<form:input path="password" cssClass="form-input" placeholder="Repeat your password" id="re_password"/>
-                                    <form:errors path="password" cssClass="errors"></form:errors> 
+                                	<form:input path="repassword" cssClass="form-input" placeholder="Repeat your password" id="re_password"/>
+                                    <form:errors path="repassword" cssClass="errors"></form:errors> 
                                 </div>
                             </div>
                         </div>    
@@ -152,7 +172,7 @@ prefix="form" %>
                         </div>
                 	</form:form>                    
                     <p class="loginhere">
-                        Already have an account ? <a href="#" class="loginhere-link">Login here</a>
+                        Already have an account ? <a href="login" class="loginhere-link">Login here</a>
                     </p>
                 </div>
             </div>
