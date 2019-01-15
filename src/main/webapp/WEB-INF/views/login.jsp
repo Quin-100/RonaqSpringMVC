@@ -60,7 +60,7 @@ prefix="form" %>
                         </div>
                 	</form:form>                    
                     <p class="loginhere">
-                        Forgot password ? <a href="#" class="loginhere-link">Forgot password</a>
+                        Forgot password ? <a href="forgotpassword" class="loginhere-link">Forgot password</a>
                     </p>
                 </div>
             </div>

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ronaq.dao.IUserDao;
+import com.ronaq.model.Feedback;
 import com.ronaq.model.Login;
 import com.ronaq.model.User;
 import com.ronaq.service.IUserService;
@@ -35,6 +36,24 @@ public class UserServiceImpl implements IUserService{
 	public boolean chkUserForLogin(Login login) {
 		// TODO Auto-generated method stub
 		return userDao.chkUserForLogin(login);
+	}
+
+
+	public User findUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByEmail(email);
+	}
+
+
+	public void updatePassword(String password, Integer id) {
+		// TODO Auto-generated method stub
+		userDao.updatePassword(password, id);
+	}
+
+
+	public void addFeedback(Feedback feedback) {
+		// TODO Auto-generated method stub
+		userDao.addFeedback(feedback);
 	}
 
 

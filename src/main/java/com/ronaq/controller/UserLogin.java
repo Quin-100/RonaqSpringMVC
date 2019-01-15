@@ -32,7 +32,7 @@ public class UserLogin {
 	
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
 	//@ExceptionHandler({ CustomException.class })
-	public String loginPerson(@ModelAttribute("login") Login l,BindingResult result, Model model) {
+	public String loginPerson(@ModelAttribute("login") Login l,BindingResult result, Model model,HttpSession session) {
 		try {
 			if (!result.hasErrors()) {			
 				if (!l.getUsername().isEmpty()) {
@@ -40,7 +40,10 @@ public class UserLogin {
 						//User user = handleFileUpload(result, fileUpload, u);
 						boolean status = this.userService.chkUserForLogin(l);
 						if(status) {
-							
+							session.setAttribute("username", l.getUsername());
+							session.setAttribute("password", l.getPassword());
+							System.out.println(session.getAttribute("username"));
+							System.out.println(session.getAttribute("password"));
 							return "dashboard";
 						}
 						else {
@@ -60,4 +63,40 @@ public class UserLogin {
 		return "login";
 
 	}	
+	
+	
+	@RequestMapping(value = "/user/logout", method = RequestMethod.GET)
+	//@ExceptionHandler({ CustomException.class })
+	public String logoutPerson(HttpSession session) {
+		try {
+				System.out.println("From Logut:"+session.getAttribute("username"));
+				System.out.println("From Logut:"+session.getAttribute("password"));		
+				
+				session.invalidate();
+				
+				
+				System.out.println("sesseion successfully invalidated");
+						// new user, add it		
+						//User user = handleFileUpload(result, fileUpload, u);
+						/*boolean status = this.userService.chkUserForLogin(l);
+						if(status) {
+							session.setAttribute("username", l.getUsername());
+							session.setAttribute("password", l.getPassword());
+							System.out.println(session.getAttribute("username"));
+							System.out.println(session.getAttribute("password"));
+							return "dashboard";
+						}
+						else {
+							return "login";
+						}*/			
+				
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//model.addAttribute("listEmployee", this.employeeDetailsService.getAllEmployeeDetails());
+		return "redirect:/login";
+
+	}	
+	
 }

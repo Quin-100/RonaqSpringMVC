@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" 
 prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" 
@@ -5,8 +7,6 @@ prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" 
 prefix="form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="com.ronaq.model.User"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,37 +34,21 @@ prefix="form" %>
     <!--  --><link href="${pageContext.request.contextPath}/resources/css/all.css" rel="stylesheet" />
 	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 	
-	<style>
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #212529;
-            color: white;  
-            padding-left: 30px;
-            padding-top: 9px;
-            padding-bottom: 8px;
-            font-size: 14px;
-            font-family: initial;
-            text-align: center          
-        }
-       
-    </style>
 </head>
 <body>
-<%-- <header id="header" style="background: #212529">
+<c:url var="addAction" value="/user/logout" ></c:url>
+<header id="header" style="background: #212529">
 			<div class="container">
 				<div class="logo" style="margin: -18px 0 0 15px"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="Ronaq"></a></div>
 				<nav id="nav">
 					<div class="opener-holder">
 						<a href="#" class="nav-opener"><span></span></a>
 					</div>
-					<a href="#" class="btn btn-primary rounded" >Logout</a>
+					<a href="${addAction}" class="btn btn-primary rounded" >Logout</a>
 					<div class="nav-drop">
 						<ul>
 							<li class="active visible-sm visible-xs"><a href="#">Home</a></li>							
-							<li><a href="#">About Us</a></li>
+							<li><a href="aboutus">About Us</a></li>
 							<li><a href="#">Services</a></li>
 							<li><a href="#">Contact Us</a></li>
 						</ul>						
@@ -72,23 +56,5 @@ prefix="form" %>
 				</nav>
 			</div>
  </header>
- <footer>
-        <div class="footer">
-            <p>&copy; 2018<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>
-                , All rights reserved to Ronaq Co-operative bank.</p>        
-                    
-        </div>
- </footer>  --%>
-<%@include file="header.jsp"%>
-</br></br></br><br></br></br></br><br>
-
-
-Username :
-<%=session.getAttribute("username")%>
-
-Password :
-<%=session.getAttribute("password") %>
-
-<%@include file="footer.jsp"%> 
 </body>
 </html>

@@ -74,15 +74,17 @@ public class User {
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="userdetails")	
 	private List<Account> lstAccount ;
 	
+	
     //private Set<Items> items;	
 	
 	
 	public User() {
 		super();
 	}
-	
+
 	public User(int id, String name, String pan, String aadhar, String email, String address, String dob, String branch,
-			String state, String acctype, String password, String repassword, List<Account> lstAccount) {
+			String state, String acctype, String password, String repassword, List<Account> lstAccount
+			) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -96,7 +98,7 @@ public class User {
 		this.acctype = acctype;
 		this.password = password;
 		this.repassword = repassword;
-		this.lstAccount = lstAccount;
+		this.lstAccount = lstAccount;		
 	}
 
 	public Integer getId() {
@@ -166,12 +168,6 @@ public class User {
 		this.password = password;
 	}
 	
-	public List<Account> getLstAccount() {
-		return lstAccount;
-	}
-	public void setLstAccount(List<Account> lstAccount) {
-		this.lstAccount = lstAccount;
-	}
 	
 	public String getRepassword() {
 		return repassword;
@@ -179,12 +175,21 @@ public class User {
 	public void setRepassword(String repassword) {
 		this.repassword = repassword;
 	}
+	
+	public List<Account> getLstAccount() {
+		return lstAccount;
+	}
+	public void setLstAccount(List<Account> lstAccount) {
+		this.lstAccount = lstAccount;
+	}	
+	
 	/*public byte[] getPhoto() {
 		return photo;
 	}
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}*/
+	
 
 	@Override
 	public String toString() {
@@ -193,6 +198,8 @@ public class User {
 				+ acctype + ", password=" + password + ", repassword=" + repassword + ", lstAccount=" + lstAccount
 				+ "]";
 	}
+
+	
 	
 	
 }

@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ronaq.dao.IUserDao;
+import com.ronaq.model.Feedback;
 import com.ronaq.model.Login;
 import com.ronaq.model.User;
+
 
 @Repository
 public class UserDaoImpl implements IUserDao {
@@ -75,12 +77,58 @@ public class UserDaoImpl implements IUserDao {
 		session.close();
 		logger.info("User Details="+ login);		
 		
-		if(u.size()>0) {
+		if(u.size()>0) {			
 			return true;
 		}
 		else {
 			return false;
 		}
+	}
+
+	public User findUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.openSession();
+		tx = session.beginTransaction();
+		Query query = session.createQuery("from User u where u.email=:email");
+		query.setString("email", email);		
+		List<User> u = query.list();
+		//session.save(user);
+		tx.commit();
+		session.close();
+		logger.info("User Details="+ email);		
+		
+		if(u.size()>0) {			
+			return u.get(0);
+		}
+		else {
+			return null;
+		}
+	}
+
+	public void updatePassword(String password, int userId) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.openSession();	
+		
+		tx = session.beginTransaction();
+		
+		User user = (User) session.load(User.class,userId);
+		user.setPassword(password);
+		//bid.setBidId(bidId);
+		//bid1 = bid;
+		session.saveOrUpdate(user);
+		tx.commit();
+		session.close();
+		logger.info("User Details="+ userId + "--"+ password);
+	}
+
+	public void addFeedback(Feedback feedback) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.openSession();
+		tx = session.beginTransaction();
+		int id = (Integer) session.save(feedback);		
+		tx.commit();
+		session.close();
+		logger.info("Feedback successfully saved ="+ feedback);
 	}
 
 	

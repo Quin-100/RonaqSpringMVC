@@ -33,7 +33,8 @@
 			<list>
 				 <value>com.ronaq.model.User</value> 
 				 <value>com.ronaq.model.Account</value>	
-				 <value>com.ronaq.model.Login</value>			
+				 <value>com.ronaq.model.Login</value>	
+				 <value>com.ronaq.model.Feedback</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -46,6 +47,7 @@
 			</props>
 		</property>
 	</bean>
+	
 	
 	<!-- @Repository -->
 	<!-- <bean id="personDao" class="com.lti.mvc.daoIml.PersonDaoImpl">
