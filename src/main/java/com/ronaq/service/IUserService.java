@@ -1,5 +1,6 @@
 package com.ronaq.service;
 
+import com.ronaq.model.Benificiary;
 import com.ronaq.model.Feedback;
 import com.ronaq.model.Login;
 import com.ronaq.model.User;
@@ -14,4 +15,7 @@ public interface IUserService {
 	public void updatePassword(String password, Integer id);
 	
 	public void addFeedback(Feedback feedback);
+	
+
+	public boolean chkUserBeneficiary(Benificiary benificiary);
 }

@@ -29,7 +29,7 @@ public class AboutUs {
 	}
 
 	
-	@RequestMapping(value="/aboutus")
+	@RequestMapping(value= {"/aboutus","/user/aboutus"})
 	public String loadregister(Model model) {
 		model.addAttribute("feedbackform", new Feedback());
 		//model.addAttribute("listState",getStateList());

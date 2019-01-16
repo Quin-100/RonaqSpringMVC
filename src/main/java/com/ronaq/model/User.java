@@ -7,9 +7,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -71,13 +75,24 @@ public class User {
 	
 	//private byte[] photo;
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="userdetails")	
+	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="userdetails")	
 	private List<Account> lstAccount ;
 	
 	
+	/*@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)	
+	@JoinTable
+		(
+		    name="USER_BENEFICIARY",
+			joinColumns= {@JoinColumn(name="UserId",referencedColumnName="id")},
+			inverseJoinColumns={@JoinColumn(name="BeneficiaryId",referencedColumnName="id")}
+	    )
+	private List<Benificiary> benList ;
+	*/
     //private Set<Items> items;	
 	
 	
+	
+
 	public User() {
 		super();
 	}
@@ -182,6 +197,14 @@ public class User {
 	public void setLstAccount(List<Account> lstAccount) {
 		this.lstAccount = lstAccount;
 	}	
+	
+	/*public List<Benificiary> getBenList() {
+		return benList;
+	}
+
+	public void setBenList(List<Benificiary> benList) {
+		this.benList = benList;
+	}*/
 	
 	/*public byte[] getPhoto() {
 		return photo;

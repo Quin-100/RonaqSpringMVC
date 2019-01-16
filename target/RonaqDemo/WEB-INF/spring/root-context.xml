@@ -4,7 +4,8 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
@@ -31,8 +32,11 @@
 		<property name="annotatedClasses">
 			<!-- Map all the annotated class with @Entity -->
 			<list>
-				<!-- <value>com.lti.mvc.model.Person</value> -->
-				
+				 <value>com.ronaq.model.User</value> 
+				 <value>com.ronaq.model.Account</value>	
+				 <value>com.ronaq.model.Login</value>	
+				 <value>com.ronaq.model.Feedback</value>
+				 <value>com.ronaq.model.Benificiary</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -45,6 +49,7 @@
 			</props>
 		</property>
 	</bean>
+	
 	
 	<!-- @Repository -->
 	<!-- <bean id="personDao" class="com.lti.mvc.daoIml.PersonDaoImpl">

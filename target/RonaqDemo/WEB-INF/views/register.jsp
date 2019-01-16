@@ -1,23 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 
+prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" 
+prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 
+prefix="form" %>
+<%@ page session="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title>Ronaq | Sign-up Form</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="../fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->    
-    <!--  --><link rel="stylesheet" href="../styles/register.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link href="${pageContext.request.contextPath}/resources/css/register.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!-- Bootstrap Date-Picker Plugin -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/> 
+    
+    <!-- Main js -->
+    <link href="${pageContext.request.contextPath}/resources/js/formValidation.js" rel="stylesheet" />
+    
+    <!-- jquery core js -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    
 
     <script>
         $(document).ready(function(){
@@ -29,109 +42,137 @@
                 maxDate: '-1d'
             });
         });
-        </script>
+     </script>
+     
+     <style>
+		.errors {
+			color: red;
+			font-style: italic;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
-
+	<c:url var="addAction" value="/user/add" ></c:url>
     <div class="main">
 
         <section class="signup">
             <!-- <img src="images/image2.jpg" alt=""> -->
             <div class="container">
                 <div class="signup-content">
-                    <form method="POST" id="signup-form" class="signup-form">
-                        <h2 class="form-title">Create account</h2>
+                	<form:form action="${addAction}" modelAttribute="user" cssClass="signup-form" id="signup-form">
+                		<h2 class="form-title">Create account</h2>
                         <div class="row">                        
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/>
+                                	<form:input path="name" cssClass="form-input" placeholder="Your Name" id="name" pattern="[a-z A-Z]*"/>
+									<form:errors path="name" cssClass="errors"></form:errors>
+<!--                                     <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/> -->
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-input" name="pan" id="pan" placeholder="Pan card no."/>
+                                	<form:input path="pan" cssClass="form-input" placeholder="Pan card no." id="pan"/>
+                                    <form:errors path="pan" cssClass="errors"></form:errors>
                                 </div>
                             </div>
                         </div> 
                         <div class="row">                        
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-input" name="aadhar" id="aadhar" placeholder="Aadhar no."/>
+                                	<form:input path="aadhar" cssClass="form-input" placeholder="Aadhar no." id="aadhar"/>
+                                    <form:errors path="aadhar" cssClass="errors"></form:errors>                                   
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="date" class="form-input" name="dob" id="dob" placeholder="Age"/>
-                                </div>
-                                <!-- <div class="form-group"> Date input
-                                    <label class="control-label" for="date">Date</label>
-                                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-                                </div> -->
-                                
-                                <!-- <div class='col-sm-6'>
-                                    <div class="form-group">
-                                        <div class='input-group date' id='datetimepicker1'>
-                                            <input type='text' class="form-control" />
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <script type="text/javascript">
-                                    $(function () {
-                                        $('#datetimepicker1').datetimepicker();
-                                    });
-                                </script> -->
+                                <div class="form-group"> 
+                                	<form:input type="date" path="dob" class="form-input" id="dob"/>
+                                    <form:errors path="dob" cssClass="errors"></form:errors>                                    
+                                </div>                                
                             </div>
                         </div>  
                         <div class="row">                        
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-input" name="address" id="address" placeholder="Address Details"/>
+                                	<form:input path="address" cssClass="form-input" placeholder="Address Details" id="address"/>
+                                    <form:errors path="address" cssClass="errors"></form:errors>                                                
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-input" name="branch" id="branch" placeholder="Branch"/>
+                                <div class="form-group">   
+                                	<form:select path="acctype" cssClass="form-input">						                
+						                <form:option selected="selected" value="savings">Savings</form:option>
+						                <form:option value="current">Current</form:option>
+						            </form:select>    
+                                    <form:errors path="acctype" cssClass="errors"></form:errors> 
                                 </div>
-                            </div>
+                            </div>                           
                         </div> 
                         <div class="row">                        
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-input" name="state" id="state" placeholder="State"/>
+                                	<form:select path="state" cssClass="form-input">						               
+						                <form:option selected="selected"  value="maharashtra">Maharashtra</form:option>
+						                <form:option value="kerala">Kerala</form:option>
+						                <form:option value="gujarat">Gujarat</form:option>
+						                <form:option value="punjab">Punjab</form:option>
+						            </form:select>                                	
+                                    <form:errors path="state" cssClass="errors"></form:errors>             
+                                    
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-input" name="accType" id="accType" placeholder="Account Type"/>
+                                	<form:select path="branch" cssClass="form-input">						                
+						                <form:option selected="selected" value="Ahmedabad">Ahmedabad-RNQAH000504</form:option>
+						                <form:option value="Pune">Pune-RNQPU000506</form:option>
+						                <form:option value="Nagpur">Nagpur-RNQNG000508</form:option>
+						                <form:option value="Vadodra">Vadodra-RNQVD000502</form:option>
+						                <form:option value="Amritsar">Amritsar-RNQAM000510</form:option>
+						                <form:option value="Ludhiana">Ludhiana-RNQLU000512</form:option>
+						                <form:option value="Chandigarh">Chandigarh-RNQCH000514</form:option>
+						                <form:option value="Kochi">Kochi-RNQKO000516</form:option>
+						                <form:option value="Thiruvananthapuram">Thiruvananthapuram-RNQTH000518</form:option>
+						            </form:select>   
+                                    <form:errors path="branch" cssClass="errors"></form:errors>                                             
+                                   
                                 </div>
                             </div>
                         </div> 
+                        <div class="row">
+                        	<div class="col-md-12">
+                        		<div class="form-group">
+                                	<form:input path="email" cssClass="form-input" placeholder="Enter your email" id="email"/>
+                                    <form:errors path="email" cssClass="errors"></form:errors> 
+                                </div>                        	
+                        	</div>
+                        </div>
                         <div class="row">                        
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-input" name="password" id="password" placeholder="Password"/>
+                                	<form:input path="password" cssClass="form-input" placeholder="Password" id="password"/>
+                                    <form:errors path="password" cssClass="errors"></form:errors>   
                                     <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password"/>
+                                	<form:input path="repassword" cssClass="form-input" placeholder="Repeat your password" id="re_password"/>
+                                    <form:errors path="repassword" cssClass="errors"></form:errors> 
                                 </div>
                             </div>
-                        </div>     
+                        </div>    
+                        <!-- <div class="row">
+                        	<p>Upload your photo</p><input type="file" name="fileUpload" size="50" />
+                        	<button href="doUpload">upload</button>
+                        </div>  -->
+                       
                         <div class="form-group">
-                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        	<input type="submit" name="submit" id="submit" class="form-submit" value="<spring:message text="Sign up"/>" />
                         </div>
-                        <div class="form-group">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
-                        </div>
-                    </form>
+                	</form:form>                    
                     <p class="loginhere">
-                        Have already an account ? <a href="#" class="loginhere-link">Login here</a>
+                        Already have an account ? <a href="login" class="loginhere-link">Login here</a>
                     </p>
                 </div>
             </div>
@@ -139,8 +180,7 @@
 
     </div>
 
-    <!-- JS -->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/main.js"></script>
+    <!-- JS -->    
+    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

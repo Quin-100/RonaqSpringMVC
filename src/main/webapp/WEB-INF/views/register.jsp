@@ -124,15 +124,15 @@ prefix="form" %>
                              <div class="col-md-6">
                                 <div class="form-group">
                                 	<form:select path="branch" cssClass="form-input">						                
-						                <form:option selected="selected" value="maharashtra">Ahmedabad-RNQAH000504</form:option>
-						                <form:option value="kerala">Pune-RNQPU000506</form:option>
-						                <form:option value="gujarat">Nagpur-RNQNG000508</form:option>
-						                <form:option value="punjab">Vadodra-RNQVD000502</form:option>
-						                <form:option value="punjab">Amritsar-RNQAM000510</form:option>
-						                <form:option value="punjab">Ludhiana-RNQLU000512</form:option>
-						                <form:option value="punjab">Chandigarh-RNQCH000514</form:option>
-						                <form:option value="punjab">Kochi-RNQKO000516</form:option>
-						                <form:option value="punjab">Thiruvananthapuram-RNQTH000518</form:option>
+						                <form:option selected="selected" value="Ahmedabad">Ahmedabad-RNQAH000504</form:option>
+						                <form:option value="Pune">Pune-RNQPU000506</form:option>
+						                <form:option value="Nagpur">Nagpur-RNQNG000508</form:option>
+						                <form:option value="Vadodra">Vadodra-RNQVD000502</form:option>
+						                <form:option value="Amritsar">Amritsar-RNQAM000510</form:option>
+						                <form:option value="Ludhiana">Ludhiana-RNQLU000512</form:option>
+						                <form:option value="Chandigarh">Chandigarh-RNQCH000514</form:option>
+						                <form:option value="Kochi">Kochi-RNQKO000516</form:option>
+						                <form:option value="Thiruvananthapuram">Thiruvananthapuram-RNQTH000518</form:option>
 						            </form:select>   
                                     <form:errors path="branch" cssClass="errors"></form:errors>                                             
                                    

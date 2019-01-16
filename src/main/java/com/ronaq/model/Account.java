@@ -70,14 +70,15 @@ public class Account {
 
 	public void setUserdetails(User userdetails) {
 		this.userdetails = userdetails;
-	}
-
+	}	
+	
 	
 	@Override
 	public String toString() {
-		return "Account [customerId=" + customerId + ", AccountNo=" + accountNo + ", balance=" + balance + ", userid=" + userdetails.getId()+"]";
+		return "Account [customerId=" + customerId + ", accountNo=" + accountNo + ", balance=" + balance
+				+ "]";
 	}
-	
+
 	public String generateAccountNo() {
 		
 		Random rand = new Random();

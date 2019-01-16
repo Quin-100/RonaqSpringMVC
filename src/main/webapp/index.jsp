@@ -45,9 +45,8 @@ prefix="form" %>
 					<a href="login" class="btn btn-primary rounded" >Login</a>
 					<div class="nav-drop">
 						<ul>
-							<li class="active visible-sm visible-xs"><a href="#">Home</a></li>							
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Services</a></li>
+							<li class="active visible-sm visible-xs"><a href="#">Home</a></li>
+							<li><a href="services">Services</a></li>
 							<li><a href="aboutus">About Us</a></li>
 						</ul>						
 					</div>

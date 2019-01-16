@@ -10,30 +10,21 @@ prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Ronaq Co-oprative Bank</title>	
-	<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/favicons/favicon-16x16.png" sizes="16x16">
+	<title>Ronaq | Dashboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!-- Custom Theme files -->
+	<link href="${pageContext.request.contextPath}/resources/css/dashboard/bootstrap4.css" type="text/css" rel="stylesheet" media="all">
+	<link href="${pageContext.request.contextPath}/resources/css/dashboard/style4.css" type="text/css" rel="stylesheet" media="all">
+	<link href="${pageContext.request.contextPath}/resources/css/dashboard/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	
 
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-	crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-	crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-	crossorigin="anonymous"></script>
-	
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/all.css">	   
-	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-
-	
-	<!-- <link rel="stylesheet" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css"> -->		
-    <!--  --><link href="${pageContext.request.contextPath}/resources/css/all.css" rel="stylesheet" />
-	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-	
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet'
+	 type='text/css'>
+	 
 	<style>
         .footer {
             position: fixed;
@@ -53,41 +44,139 @@ prefix="form" %>
     </style>
 </head>
 <body>
-<%-- <header id="header" style="background: #212529">
-			<div class="container">
-				<div class="logo" style="margin: -18px 0 0 15px"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="Ronaq"></a></div>
-				<nav id="nav">
-					<div class="opener-holder">
-						<a href="#" class="nav-opener"><span></span></a>
-					</div>
-					<a href="#" class="btn btn-primary rounded" >Logout</a>
-					<div class="nav-drop">
-						<ul>
-							<li class="active visible-sm visible-xs"><a href="#">Home</a></li>							
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Services</a></li>
-							<li><a href="#">Contact Us</a></li>
-						</ul>						
-					</div>
-				</nav>
-			</div>
- </header>
- <footer>
-        <div class="footer">
-            <p>&copy; 2018<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>
-                , All rights reserved to Ronaq Co-operative bank.</p>        
-                    
-        </div>
- </footer>  --%>
 <%@include file="header.jsp"%>
-</br></br></br><br></br></br></br><br>
-
-
+<%-- 
 Username :
 <%=session.getAttribute("username")%>
 
 Password :
-<%=session.getAttribute("password") %>
+<%=session.getAttribute("password") %> --%>
+<div class="space">
+		<div class="services-agileits" id="services" style="margin-top:48px;margin-bottom:10px">
+			<div class="container">
+				<div class="tittle-agileinfo">
+					
+				</div>
+				<div class="services-left">
+					<h4 class="title">Account Information</h4>
+					<div class="more">
+						<a href="#" data-toggle="modal" data-target="#myModal"> Click here</a>
+					</div>
+				</div>
+			</div>
+
+
+			<!--//services-->
+
+
+			<!-- modal-sign -->
+			<div class="modal bnr-modal fade" id="myModal" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="logo" />
+							</div>
+							<div class="modal-body">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th>Sr No</th>
+											<th>Particulars</th>
+											<th>Amount</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>Cheque</td>
+											<td>23000</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>Cash</td>
+											<td>10000</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>Cash</td>
+											<td>45000</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="w3ls-section services">
+				<div class="container">
+					<div class="services-righta">
+						<h4 class="title">Loan Information</h4>
+						<div class="more">
+							<a href="#" data-toggle="modal" data-target="#myModal1"> Click here</a>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal bnr-modal fade" id="myModal1" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-dialog modal-md">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="logo" />
+								</div>
+								<div class="modal-body">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Duration(months)</th>
+												<th>Amount</th>
+												<th>Return Amount</th>
+												<th>Status</th>
+												<th>Remark</th>
+											</tr>
+										</thead>
+										<tbody>										
+											<tr>
+												<td>2</td>
+												<td>2.5 Lakhs</td>
+												<td>3 Lakhs</td>
+												<td>Approved</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>2.5 Lakhs</td>
+												<td>3 Lakhs</td>
+												<td>Approved</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>2.5 Lakhs</td>
+												<td>3 Lakhs</td>
+												<td>Approved</td>
+												<td>-</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="${pageContext.request.contextPath}/resources/js/dashboard/bootstrap4.js"></script>
 
 <%@include file="footer.jsp"%> 
 </body>

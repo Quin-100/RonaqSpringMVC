@@ -4,6 +4,7 @@ package com.ronaq.daoimpl;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ronaq.dao.IUserDao;
+import com.ronaq.model.Benificiary;
 import com.ronaq.model.Feedback;
 import com.ronaq.model.Login;
 import com.ronaq.model.User;
@@ -129,6 +131,40 @@ public class UserDaoImpl implements IUserDao {
 		tx.commit();
 		session.close();
 		logger.info("Feedback successfully saved ="+ feedback);
+	}
+
+	public boolean chkUserBeneficiary(Benificiary benificiary) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.openSession();
+		tx = session.beginTransaction();
+		
+		
+		String query = "select u.name,u.branch,u.acctype,a.accountno from USER_DETAILS u inner join ACCOUNT_INFO a on u.id = a.id\r\n" + 
+				"where u.name = :name and u.branch = :branch and u.acctype = :acctype and a.accountno = :accountno";
+		
+		SQLQuery sqlQuery = session.createSQLQuery(query);
+		sqlQuery.setParameter("name", benificiary.getName());
+		sqlQuery.setParameter("branch", benificiary.getBranch());
+		sqlQuery.setParameter("acctype", benificiary.getAcctype());
+		sqlQuery.setParameter("accountno", benificiary.getAccountno());
+		
+		List<Benificiary> results = sqlQuery.list();
+		
+		/*Query query = session.createQuery("from User u, Account a where u.name=:name and u.accountno=:password");
+		query.setString("email", login.getUsername());
+		query.setString("password", login.getPassword());
+		List<User> u = query.list();
+		//session.save(user);*/
+		tx.commit();
+		session.close();
+		logger.info("User Details="+ benificiary);		
+		
+		if(results.size() == 1) {			
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	

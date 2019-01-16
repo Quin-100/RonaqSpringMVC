@@ -30,7 +30,7 @@ public class UserLogin {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/login")
 	//@ExceptionHandler({ CustomException.class })
 	public String loginPerson(@ModelAttribute("login") Login l,BindingResult result, Model model,HttpSession session) {
 		try {
@@ -40,6 +40,8 @@ public class UserLogin {
 						//User user = handleFileUpload(result, fileUpload, u);
 						boolean status = this.userService.chkUserForLogin(l);
 						if(status) {
+							User u =  this.userService.findUserByEmail(l.getUsername());
+							System.out.println("I am the user u want "+u);
 							session.setAttribute("username", l.getUsername());
 							session.setAttribute("password", l.getPassword());
 							System.out.println(session.getAttribute("username"));
