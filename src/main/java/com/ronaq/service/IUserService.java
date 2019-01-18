@@ -44,4 +44,7 @@ public interface IUserService {
 	public List<LoanData> getLoan();
 	
 	public LoanData getLoanById(int id);
+	
+
+	public void addLoanApplication(User user);
 }

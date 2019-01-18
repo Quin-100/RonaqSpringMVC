@@ -397,6 +397,16 @@ public class UserDaoImpl implements IUserDao {
 		}
 	}
 
+	public void addLoanApplication(User user) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.openSession();
+		tx = session.beginTransaction();
+		session.saveOrUpdate(user);		
+		tx.commit();
+		session.close();
+		logger.info("Loan Application successfully done ="+ user);
+	}
+
 	
 
 }

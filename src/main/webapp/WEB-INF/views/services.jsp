@@ -70,7 +70,7 @@
 						<div class="service_text">
 							<p>Credit score determines your loan eligibility.Kindly check your score here before applying for loan.</p>
 						</div>
-						<div class="service_link"><a href="#">Read More</a></div>
+						<div class="service_link"><a href="cibil">Read More</a></div>
 					</div>
 
 					<!-- Service -->

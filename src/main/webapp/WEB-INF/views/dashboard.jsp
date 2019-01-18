@@ -108,9 +108,8 @@ Password :
 				<div class="modal-dialog" role="document">
 					<div class="modal-dialog modal-md">
 						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								<img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="logo" />
+							<div class="modal-header">								
+								<img src="${pageContext.request.contextPath}/resources/images/logo_footer.png" style="width: 120px;" alt="logo" />
 							</div>
 							<div class="modal-body">
 								<table class="table table-striped">
@@ -168,44 +167,45 @@ Password :
 					<div class="modal-dialog" role="document">
 						<div class="modal-dialog modal-md">
 							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="logo" />
+								<div class="modal-header">									
+									<img src="${pageContext.request.contextPath}/resources/images/logo_footer.png" alt="logo" style="width: 120px;"/>
 								</div>
 								<div class="modal-body">
 									<table class="table table-striped">
 										<thead>
 											<tr>
+												<th>Sr No</th>
+												<th>Loan Type</th>
 												<th>Duration(months)</th>
-												<th>Amount</th>
-												<th>Return Amount</th>
-												<th>Status</th>
-												<th>Remark</th>
+												<th>Amount</th>												
+												<th>Return Amount</th>					
+												<th>Status</th>												
 											</tr>
 										</thead>
-										<tbody>										
-											<tr>
-												<td>2</td>
-												<td>2.5 Lakhs</td>
-												<td>3 Lakhs</td>
-												<td>Approved</td>
-												<td>-</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>2.5 Lakhs</td>
-												<td>3 Lakhs</td>
-												<td>Approved</td>
-												<td>-</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>2.5 Lakhs</td>
-												<td>3 Lakhs</td>
-												<td>Approved</td>
-												<td>-</td>
-											</tr>
-										</tbody>
+										<c:set var="count" value="0" scope="page" />
+										<c:if test="${!empty listLoanApplication}">
+											<c:forEach items="${listLoanApplication}" var="loanApplications">
+												<tbody>
+													<tr>
+														<c:set var="count" value="${count + 1}" scope="page"/>
+														<td><c:out value="${count}"></c:out></td>
+														<td>${loanApplications.loantype}</td>
+														<td>${loanApplications.repaylimit}</td>
+														<td>${loanApplications.amount}</td>														
+														<td>${loanApplications.returnamount}</td>	
+														<td>${loanApplications.status}</td>												 
+													</tr>										
+												</tbody>
+											</c:forEach>
+										</c:if>		
+										<c:if test="${empty listTransaction}">
+											<tbody>
+												<tr>
+													<td>No transaction done yet</td>																									
+												</tr>										
+											</tbody>
+											
+										</c:if>			
 									</table>
 								</div>
 							</div>

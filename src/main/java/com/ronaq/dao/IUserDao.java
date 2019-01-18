@@ -45,5 +45,7 @@ public interface IUserDao {
 	
 	public LoanData getLoanById(int id);
 	
+	public void addLoanApplication(User user);
+	
 
 }

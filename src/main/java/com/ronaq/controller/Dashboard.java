@@ -36,6 +36,7 @@ public class Dashboard {
 		//model.addAttribute("feedbackform", new Feedback());
 		User user = (User) session.getAttribute("userdetails");		
 		model.addAttribute("listTransaction",user.getLstTransaction());
+		model.addAttribute("listLoanApplication",user.getLstLoanApplications());
 		System.out.println(user.getLstTransaction());
 		return "dashboard";
 	}

@@ -14,6 +14,8 @@
 <link href="${pageContext.request.contextPath}/resources/css/transactions/bootstrapa.css" rel="stylesheet" type="text/css" media="all" /> <!-- Bootstrap-Core-CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/transactions/stylea.css" rel="stylesheet" type="text/css" media="all" /> <!-- Style-CSS --> 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/fonts/font-awesome-4.3.0/css/font-awesome.min.css"> <!-- Font-Awesome-Icons-CSS -->
+
+
 <!-- //css files -->
 
 

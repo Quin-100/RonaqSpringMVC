@@ -117,6 +117,28 @@ public class Services {
 		return "beneficiary";
 	}
 	
+	
+	@RequestMapping(value= {"/cibil","/user/cibil"})
+	public String loadCibilCalc(HttpSession httpSession,Model model) {
+		//model.addAttribute("feedbackform", new Feedback());
+		//model.addAttribute("listState",getStateList());
+		if(httpSession.getAttribute("userdetails") == null) {
+			System.out.println("You are not loggged in as a user");
+			return "redirect:/login";
+		}
+		else {
+			model.addAttribute("beneficiary", new Benificiary());
+		}
+		return "beneficiary";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	// For add and update person both
 		@RequestMapping(value = "/user/addBeneficiary", method = RequestMethod.POST)
 		//@ExceptionHandler({ CustomException.class })

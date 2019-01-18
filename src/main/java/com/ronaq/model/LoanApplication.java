@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,14 +26,20 @@ public class LoanApplication {
 	
 	private float loanrate;
 	
-	private double returnamount;
-
+	private float returnamount;
+	
+	private String status;
+	
+	@ManyToOne
+    @JoinColumn(name="id", nullable=false)
+    private User userdetails;
+	
 	public LoanApplication() {
 		super();
 	}
 
 	public LoanApplication(int applicationId, String loantype, int repaylimit, double amount, float loanrate,
-			double returnamount) {
+			float returnamount, String status, User userdetails) {
 		super();
 		this.applicationId = applicationId;
 		this.loantype = loantype;
@@ -39,6 +47,8 @@ public class LoanApplication {
 		this.amount = amount;
 		this.loanrate = loanrate;
 		this.returnamount = returnamount;
+		this.status = status;
+		this.userdetails = userdetails;
 	}
 
 	public int getApplicationId() {
@@ -81,18 +91,40 @@ public class LoanApplication {
 		this.loanrate = loanrate;
 	}
 
-	public double getReturnamount() {
+	
+	
+	public float getReturnamount() {
 		return returnamount;
 	}
 
-	public void setReturnamount(double returnamount) {
+
+
+	public void setReturnamount(float returnamount) {
 		this.returnamount = returnamount;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public User getUserdetails() {
+		return userdetails;
+	}
+
+	public void setUserdetails(User userdetails) {
+		this.userdetails = userdetails;
 	}
 
 	@Override
 	public String toString() {
-		return "LoanForm [applicationId=" + applicationId + ", loantype=" + loantype + ", repaylimit=" + repaylimit
-				+ ", amount=" + amount + ", loanrate=" + loanrate + ", returnamount=" + returnamount + "]";
-	}	
+		return "LoanApplication [applicationId=" + applicationId + ", loantype=" + loantype + ", repaylimit="
+				+ repaylimit + ", amount=" + amount + ", loanrate=" + loanrate + ", returnamount=" + returnamount
+				+ ", Status=" + status + "]";
+	}
+
 
 }

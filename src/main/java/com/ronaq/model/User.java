@@ -91,11 +91,12 @@ public class User {
 	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="userdetails")	
 	private List<Transactions> lstTransaction ;
 	
-    //private Set<Items> items;	
+	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="userdetails")	
+	private List<LoanApplication> lstLoanApplications ;
 	
-	
-	
+    //private Set<Items> items;
 
+	
 	public User() {
 		super();
 	}
@@ -218,16 +219,26 @@ public class User {
 	public void setLstTransaction(List<Transactions> lstTransaction) {
 		this.lstTransaction = lstTransaction;
 	}
+	
+	
+
+	public List<LoanApplication> getLstLoanApplications() {
+		return lstLoanApplications;
+	}
+
+	public void setLstLoanApplications(List<LoanApplication> lstLoanApplications) {
+		this.lstLoanApplications = lstLoanApplications;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", pan=" + pan + ", aadhar=" + aadhar + ", email=" + email
 				+ ", address=" + address + ", dob=" + dob + ", branch=" + branch + ", state=" + state + ", acctype="
 				+ acctype + ", password=" + password + ", repassword=" + repassword + ", lstAccount=" + lstAccount
-				+ ", benList=" + benList + ", lstTransaction=" + lstTransaction + "]";
+				+ ", benList=" + benList + ", lstTransaction=" + lstTransaction + ", lstLoanApplications="
+				+ lstLoanApplications + "]";
 	}
 
-	
 	
 	/*public byte[] getPhoto() {
 		return photo;

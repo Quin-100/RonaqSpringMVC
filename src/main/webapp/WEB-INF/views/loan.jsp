@@ -48,7 +48,7 @@ prefix="form" %>
 <header id="header" style="background: #212529">
 			<div class="container">
 				<div class="logo" style="margin: -18px 0 0 15px"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="Ronaq"></a></div>
-				<nav id="nav">
+				<nav id="nav" style="background: 000 !important;">
 					<div class="opener-holder">
 						<a href="#" class="nav-opener"><span></span></a>
 					</div>

@@ -52,19 +52,24 @@ prefix="form" %>
                                 </div>
                             </div>                               
                         </div>  
-                        <div class="row"></div>
+                        <div class="row">
                             <div class="form-group">
                                 <input type="submit" name="submit" id="submit" class="form-submit" value="Login"/>
                             </div>
-                        </div>
-                	</form:form>                    
-                    <p class="loginhere">
-                        Forgot password ? <a href="forgotpassword" class="loginhere-link">Forgot password</a>
-                    </p>
-                </div>
-            </div>
+                        </div>  
+                        <div class="row">
+                        	<div class="col-md-12">
+	                        	<p class="loginhere">
+		                        	Forgot password ? <a href="forgotpassword" class="loginhere-link">Forgot password</a>
+		                   		</p>
+	                   		</div>
+                        </div>     
+	                    
+                    </form:form> 
+                    
+                  </div>
+              </div>
         </section>
-
     </div>
 
     <!-- JS -->    

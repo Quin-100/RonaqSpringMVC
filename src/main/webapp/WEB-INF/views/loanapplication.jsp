@@ -14,25 +14,17 @@ prefix="form" %>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ronaq | Loan Application Form</title>
     <!-- Main css -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-    <script type="text/javascript">
-    function CalculateRepayAmount() {
-		
-	}
-    
-    
-    </script>
-    
-    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">       
     
 </head>
 <body>
 <c:url var="loanapplication" value="/user/loanapplication"></c:url>
+<c:url var="calcreturnamount" value="/user/calcreturnamount"></c:url>
 <div class="main">
         <section class="signup">
             <div class="container">
                 <div class="signup-content">
-                    <form:form  action="${loanapplication}" modelAttribute="loanform" cssClass="signup-form">
+                    <form:form  action="${calcreturnamount}" modelAttribute="loanform" cssClass="signup-form">
                     	
                     		<h2 class="form-title">Loan Application Form</h2>  
                         
@@ -43,21 +35,76 @@ prefix="form" %>
                                     <form:errors path="amount" cssClass="errors"></form:errors>
                                 </div>
                             </div>
-                        </div>   
+                        </div> 
                         
-                        <div class="row">                        
-                            <div class="col-md-12">
+                        <div class="row">
+                        <table class="table table-striped">	
+							<c:set var="loandata" value="${loandata}"></c:set>
+							<tbody>
+								<tr>
+									<td>Loan Type :</td>
+									<td>${loandata.loantype}</td>
+								</tr>
+								<tr>
+									<td>Loan Duration(months) :</td>
+									<td>${loandata.repaylimit}</td>
+								</tr>
+								<tr>
+									<td>Loan Rate(%) :</td>
+									<td>${loandata.loanrate}</td>																									 
+								</tr>										
+							</tbody>
+						</table>
+                         </div> 
+                        
+                        <%-- <div class="row">       
+                        	<div class="col-md-6">
+                        		 <div class="form-group">
+                                    <label id="labeloantype" class="form-input">Loan Type :</label>                                    
+                                </div>
+                        	</div>                 
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <form:input path="extranote" id="returnamount" cssClass="form-input" placeholder="Your return amount would be."/>
-                                    <form:errors path="extranote" cssClass="errors"></form:errors>
+                                	<c:set var="type" value="${loantype}" scope="page" />
+                                    <form:label path="loantype" id="loantype" cssClass="form-input" value="${loantype}"/>                                   
                                 </div>
                             </div>
-                        </div>               
-                          
-                        <div class="form-group">
-                        	<input type="button" name="calcreturnamount" id="calc" class="form-submit" value="Calculate Repay amount" onclick="CalculateRepayAmount()"/>
-                        
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Send"/>
+                        </div>  
+                        <div class="row">       
+                        	<div class="col-md-6">
+                        		 <div class="form-group">
+                                    <label id="labeloantype" class="form-input">Duration :</label>
+                                    
+                                </div>
+                        	</div>                 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <form:label path="repaylimit" id="loantype" cssClass="form-input" text="${duration}"/>                                    
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="row">       
+                        	<div class="col-md-6">
+                        		 <div class="form-group">
+                                    <label id="labeloantype" class="form-input">Rate of Interest :</label>
+                                    
+                                </div>
+                        	</div>                 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <form:label path="loanrate" id="loantype" cssClass="form-input" text="${rateofinterest}"/>                                    
+                                </div>
+                            </div>
+                        </div>            --%>     
+                        <br><br>
+                        <div class="row">                        
+                            <div class="col-md-6">
+	                        	<input type="submit" name="calcreturnamount" id="calc" class="form-submit" value="Next"/>
+	                        	<br><br>
+	                        </div>
+	                        <!-- <!-- <div class="col-md-6">   
+	                            <input type="submit" name="submit" id="submit" class="form-submit" value="Send"/>                           
+                           </div> --> 
                         </div>
                     </form:form>                    
                 </div>

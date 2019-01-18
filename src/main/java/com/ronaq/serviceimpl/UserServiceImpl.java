@@ -127,7 +127,9 @@ public class UserServiceImpl implements IUserService{
 	}
 
 
-
-	
+	public void addLoanApplication(User user) {
+		// TODO Auto-generated method stub
+		userDao.addLoanApplication(user);
+	}
 
 }
