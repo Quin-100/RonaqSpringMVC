@@ -44,7 +44,41 @@ prefix="form" %>
     </style>
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%-- <%@include file="header.jsp"%> --%>
+<header id="header" style="background: #212529">
+			<div class="container">
+				<div class="logo" style="margin: -18px 0 0 15px"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="Ronaq"></a></div>
+				<nav id="nav">
+					<div class="opener-holder">
+						<a href="#" class="nav-opener"><span></span></a>
+					</div>
+					<% if(session.getAttribute("userdetails") == null){ %>
+					
+						<a href="${addActionLogin}" class="btn btn-primary rounded" >Login</a>
+					
+					<% } else { %>
+						
+						<a href="${addActionLogout}" class="btn btn-primary rounded" >Logout</a>
+						
+					<% } %>					
+					<div class="nav-drop">
+						<ul>
+							<% if(session.getAttribute("userdetails") == null){ %>
+					
+								<li><a href="">Home</a></li>	
+							
+							<% } else { %>
+								
+								<li><a href="dashboard">Home</a></li>	
+								
+							<% } %>							
+							<li><a href="aboutus">About Us</a></li>
+							<li><a href="services">Services</a></li>
+						</ul>						
+					</div>
+				</nav>
+			</div>
+ </header>
 <%-- 
 Username :
 <%=session.getAttribute("username")%>
@@ -84,26 +118,35 @@ Password :
 										<tr>
 											<th>Sr No</th>
 											<th>Particulars</th>
+											<th>Beneficiary Name</th>
 											<th>Amount</th>
+											<th>Date</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Cheque</td>
-											<td>23000</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Cash</td>
-											<td>10000</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Cash</td>
-											<td>45000</td>
-										</tr>
-									</tbody>
+									<c:set var="count" value="0" scope="page" />
+									<c:if test="${!empty listTransaction}">
+										<c:forEach items="${listTransaction}" var="transactions">
+											<tbody>
+												<tr>
+													<c:set var="count" value="${count + 1}" scope="page"/>
+													<td><c:out value="${count}"></c:out></td>
+													<td>${transactions.extranote}</td>
+													<td>${transactions.benname}</td>
+													<td>${transactions.amount}</td>
+													<td>${transactions.transactiondate}</td>													 
+												</tr>										
+											</tbody>
+										</c:forEach>
+									</c:if>		
+									<c:if test="${empty listTransaction}">
+										<tbody>
+											<tr>
+												<td>No transaction done yet</td>																									
+											</tr>										
+										</tbody>
+										
+									</c:if>								
+									
 								</table>
 							</div>
 						</div>

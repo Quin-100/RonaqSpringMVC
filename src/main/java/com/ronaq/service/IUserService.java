@@ -1,7 +1,10 @@
 package com.ronaq.service;
 
+import java.util.List;
+
 import com.ronaq.model.Benificiary;
 import com.ronaq.model.Feedback;
+import com.ronaq.model.LoanData;
 import com.ronaq.model.Login;
 import com.ronaq.model.User;
 
@@ -18,4 +21,27 @@ public interface IUserService {
 	
 
 	public boolean chkUserBeneficiary(Benificiary benificiary);
+	
+	public void addUserBenificiary(User user);
+	
+	public List<Benificiary> getBeneficiaryById(int id,String branch);
+	
+	public List<Benificiary> getBeneficiaryById(int id);
+	
+	public void addUserTransaction(User user);
+	
+	public double getBalanceByAccNo(String accno);
+	
+	public void updateBenificiaryBalance(String benaccountno,double amount);
+	
+	//temp
+	public Benificiary getBen(int id);
+
+	//temp
+	public void addLoan(LoanData loanData);
+	
+	
+	public List<LoanData> getLoan();
+	
+	public LoanData getLoanById(int id);
 }

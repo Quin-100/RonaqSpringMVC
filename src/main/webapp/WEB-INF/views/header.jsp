@@ -30,10 +30,6 @@ prefix="form" %>
 	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
 	
-	<!-- <link rel="stylesheet" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css"> -->		
-    <!--  --><link href="${pageContext.request.contextPath}/resources/css/all.css" rel="stylesheet" />
-	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-	
 </head>
 <body>
 <c:url var="addActionLogin" value="/login" ></c:url>
@@ -45,7 +41,7 @@ prefix="form" %>
 					<div class="opener-holder">
 						<a href="#" class="nav-opener"><span></span></a>
 					</div>
-					<% if(session.getAttribute("username") == null){ %>
+					<% if(session.getAttribute("userdetails") == null){ %>
 					
 						<a href="${addActionLogin}" class="btn btn-primary rounded" >Login</a>
 					
@@ -56,7 +52,15 @@ prefix="form" %>
 					<% } %>					
 					<div class="nav-drop">
 						<ul>
-							<li class="active visible-sm visible-xs"><a href="#">Home</a></li>							
+							<% if(session.getAttribute("userdetails") == null){ %>
+					
+								<li><a href="">Home</a></li>	
+							
+							<% } else { %>
+								
+								<li><a href="dashboard">Home</a></li>	
+								
+							<% } %>															
 							<li><a href="aboutus">About Us</a></li>
 							<li><a href="services">Services</a></li>
 						</ul>						

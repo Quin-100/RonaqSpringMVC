@@ -80,7 +80,7 @@
 						<div class="service_text">
 							<p>RONAQ provides loans with lowest interest rates, instant approval, minimum documentation.</p>
 						</div>
-						<div class="service_link"><a href="#">Read More</a></div>
+						<div class="service_link"><a href="loans">Read More</a></div>
 					</div>
 
 					<!-- Service -->

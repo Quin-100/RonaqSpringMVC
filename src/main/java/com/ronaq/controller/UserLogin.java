@@ -42,13 +42,15 @@ public class UserLogin {
 						if(status) {
 							User u =  this.userService.findUserByEmail(l.getUsername());
 							System.out.println("I am the user u want "+u);
-							session.setAttribute("username", l.getUsername());
-							session.setAttribute("password", l.getPassword());
-							System.out.println(session.getAttribute("username"));
-							System.out.println(session.getAttribute("password"));
-							return "dashboard";
+							session.setAttribute("userdetails", u);
+							//session.setAttribute("username", l.getUsername());
+							//session.setAttribute("password", l.getPassword());
+							//System.out.println(session.getAttribute("username"));
+							System.out.println(session.getAttribute("userdetails"));
+							return "redirect:/user/dashboard";
 						}
 						else {
+							System.out.println("Invalid credentials....");
 							return "login";
 						}
 				} else {
@@ -67,12 +69,12 @@ public class UserLogin {
 	}	
 	
 	
-	@RequestMapping(value = "/user/logout", method = RequestMethod.GET)
+	@RequestMapping(value = {"/user/logout","/user"}, method = RequestMethod.GET)
 	//@ExceptionHandler({ CustomException.class })
 	public String logoutPerson(HttpSession session) {
 		try {
-				System.out.println("From Logut:"+session.getAttribute("username"));
-				System.out.println("From Logut:"+session.getAttribute("password"));		
+				System.out.println("From Logut:"+session.getAttribute("userdetails"));
+				//System.out.println("From Logut:"+session.getAttribute("password"));		
 				
 				session.invalidate();
 				

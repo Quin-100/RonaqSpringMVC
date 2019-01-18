@@ -1,5 +1,6 @@
 package com.ronaq.model;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,7 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="BENEFICIARY_DETAILS")
-public class Benificiary {
+public class Benificiary implements Comparator<Benificiary>{
 	
 	@Id
 	@Column(name="id")
@@ -35,8 +36,8 @@ public class Benificiary {
 	@NotEmpty(message="Branch is required")
 	private String branch;
 	
-	/*@ManyToMany(cascade=CascadeType.ALL, mappedBy="benList")	
-	private List<User> userList;*/
+	@ManyToMany(cascade=CascadeType.ALL, mappedBy="benList")	
+	private List<User> userList;
 
 	public Benificiary() {
 		super();
@@ -101,7 +102,7 @@ public class Benificiary {
 	}
 
 
-	/*public List<User> getUserList() {
+	public List<User> getUserList() {
 		return userList;
 	}
 
@@ -109,12 +110,26 @@ public class Benificiary {
 
 	public void setUserList(List<User> userList) {
 		this.userList = userList;
-	}*/
+	}
 
 	@Override
 	public String toString() {
 		return "Benificiary [id=" + id + ", name=" + name + ", acctype=" + acctype + ", accountno=" + accountno
 				+ ", branch=" + branch + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub	
+		
+		return super.equals(obj);
+	}
+
+	public int compare(Benificiary o1, Benificiary o2) {
+		// TODO Auto-generated method stub		
+		return (o1.getAccountno().compareTo(o2.getAccountno()));
+	}
+	
+	
 
 }

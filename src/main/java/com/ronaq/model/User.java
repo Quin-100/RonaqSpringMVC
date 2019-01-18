@@ -68,8 +68,8 @@ public class User {
 	@Size(min=6,message="Enter min 6 characters")
 	private String password;
 	
-	@NotEmpty(message="password is required")
-	@Size(min=6,message="Enter min 6 characters")	
+	//@NotEmpty(message="Re password is required")
+	//@Size(min=6,message="Enter min 6 characters")	
 	@Transient
 	private String repassword;
 	
@@ -79,7 +79,7 @@ public class User {
 	private List<Account> lstAccount ;
 	
 	
-	/*@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)	
+	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)	
 	@JoinTable
 		(
 		    name="USER_BENEFICIARY",
@@ -87,7 +87,10 @@ public class User {
 			inverseJoinColumns={@JoinColumn(name="BeneficiaryId",referencedColumnName="id")}
 	    )
 	private List<Benificiary> benList ;
-	*/
+	
+	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="userdetails")	
+	private List<Transactions> lstTransaction ;
+	
     //private Set<Items> items;	
 	
 	
@@ -198,13 +201,33 @@ public class User {
 		this.lstAccount = lstAccount;
 	}	
 	
-	/*public List<Benificiary> getBenList() {
+	public List<Benificiary> getBenList() {
 		return benList;
 	}
 
 	public void setBenList(List<Benificiary> benList) {
 		this.benList = benList;
-	}*/
+	}
+
+	
+	
+	public List<Transactions> getLstTransaction() {
+		return lstTransaction;
+	}
+
+	public void setLstTransaction(List<Transactions> lstTransaction) {
+		this.lstTransaction = lstTransaction;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", pan=" + pan + ", aadhar=" + aadhar + ", email=" + email
+				+ ", address=" + address + ", dob=" + dob + ", branch=" + branch + ", state=" + state + ", acctype="
+				+ acctype + ", password=" + password + ", repassword=" + repassword + ", lstAccount=" + lstAccount
+				+ ", benList=" + benList + ", lstTransaction=" + lstTransaction + "]";
+	}
+
+	
 	
 	/*public byte[] getPhoto() {
 		return photo;
@@ -214,13 +237,7 @@ public class User {
 	}*/
 	
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", pan=" + pan + ", aadhar=" + aadhar + ", email=" + email
-				+ ", address=" + address + ", dob=" + dob + ", branch=" + branch + ", state=" + state + ", acctype="
-				+ acctype + ", password=" + password + ", repassword=" + repassword + ", lstAccount=" + lstAccount
-				+ "]";
-	}
+	
 
 	
 	

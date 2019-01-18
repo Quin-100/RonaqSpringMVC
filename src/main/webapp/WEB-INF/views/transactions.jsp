@@ -53,7 +53,7 @@
 						<i class="fa fa-money" aria-hidden="true"></i>
 					</div>
 					<div class="wthree-services-info">
-						<h5><a href="samebranch"></a>Same Branch </h5>
+						<h5><a href="samebranch">Same Branch</a></h5>
 						<p>Experience the all new Inter Banking</p>
 					</div>
 				</div>
@@ -62,7 +62,7 @@
 						<i class="fa fa-user" aria-hidden="true"></i>
 					</div>
 					<div class="wthree-services-info">
-						<h5><a href="differentbranch"></a>Different Branch</h5>
+						<h5><a href="differentbranch">Different Branch</a></h5>
 						<p>Intra Banking made easier </p>
 					</div>
 				</div>				
