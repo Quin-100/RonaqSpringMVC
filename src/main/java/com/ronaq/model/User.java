@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -94,6 +95,13 @@ public class User {
 	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="userdetails")	
 	private List<LoanApplication> lstLoanApplications ;
 	
+
+	@NotEmpty(message="Security Question is required")
+    private String securityQuestion;
+	
+	@NotEmpty(message="Security answer is required")
+	private String securityAnswer;
+	
     //private Set<Items> items;
 
 	
@@ -102,8 +110,9 @@ public class User {
 	}
 
 	public User(int id, String name, String pan, String aadhar, String email, String address, String dob, String branch,
-			String state, String acctype, String password, String repassword, List<Account> lstAccount
-			) {
+			String state, String acctype, String password, String repassword, List<Account> lstAccount,
+			List<Benificiary> benList, List<Transactions> lstTransaction, List<LoanApplication> lstLoanApplications,
+			String securityQuestion, String securityAnswer) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -117,9 +126,15 @@ public class User {
 		this.acctype = acctype;
 		this.password = password;
 		this.repassword = repassword;
-		this.lstAccount = lstAccount;		
+		this.lstAccount = lstAccount;
+		this.benList = benList;
+		this.lstTransaction = lstTransaction;
+		this.lstLoanApplications = lstLoanApplications;
+		this.securityQuestion = securityQuestion;
+		this.securityAnswer = securityAnswer;
 	}
-
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -228,6 +243,25 @@ public class User {
 
 	public void setLstLoanApplications(List<LoanApplication> lstLoanApplications) {
 		this.lstLoanApplications = lstLoanApplications;
+	}	
+	
+
+	public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+
+
+
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
 	}
 
 	@Override
@@ -236,21 +270,17 @@ public class User {
 				+ ", address=" + address + ", dob=" + dob + ", branch=" + branch + ", state=" + state + ", acctype="
 				+ acctype + ", password=" + password + ", repassword=" + repassword + ", lstAccount=" + lstAccount
 				+ ", benList=" + benList + ", lstTransaction=" + lstTransaction + ", lstLoanApplications="
-				+ lstLoanApplications + "]";
+				+ lstLoanApplications + ", securityQuestion=" + securityQuestion + ", securityAnswer=" + securityAnswer
+				+ "]";
 	}
 
-	
+		
 	/*public byte[] getPhoto() {
 		return photo;
 	}
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
-	}*/
-	
-
-	
-
-	
+	}*/	
 	
 	
 }

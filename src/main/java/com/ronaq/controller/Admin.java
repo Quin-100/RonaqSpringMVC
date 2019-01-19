@@ -1,16 +1,17 @@
 package com.ronaq.controller;
 
-import javax.validation.Valid;
+import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ronaq.model.Feedback;
-import com.ronaq.model.LoanData;
+
+import com.ronaq.model.LoanApplication;
+
 import com.ronaq.model.User;
 import com.ronaq.service.IUserService;
 
@@ -22,19 +23,44 @@ public class Admin {
 	public void setUserService(IUserService userService) {
 		this.userService = userService;
 	}
-
 	
-	@RequestMapping(value= {"/addloan","user/addloan"})
-	public String loadregister(Model model) {
-		model.addAttribute("loans", new LoanData());
+	@RequestMapping(value="/adminlogin")
+	public String loadadminlogin(Model model) {
+		List<LoanApplication> lstloan = this.userService.getLoanApplications();
+		if(lstloan.size() > 0) {
+			User name = lstloan.get(0).getUserdetails();
+			model.addAttribute("user",name);
+			System.out.println("I had applied for loan"+name);
+		}
+		
+		model.addAttribute("loanlst", lstloan);
 		//model.addAttribute("listState",getStateList());
-		return "admin";
+		return "adminHome";
 	}
 	
-	@RequestMapping(value= {"/add/loan"})
-	public void addLoan(@ModelAttribute("loans") @Valid LoanData u,BindingResult result, Model model) {
-		System.out.println("Laon Info :" + u);
-		//userService.addLoan(u);
-		System.out.println("Loan Types are :------"+this.userService.getLoan());
+	@RequestMapping("/approve/{id}")
+	public String updateApproveLoan(@PathVariable("id") int id, Model model) {		
+		if(id != 0) {
+			this.userService.approveLoan(id);
+			System.out.println("Loan approved"+id);
+			return "redirect:/adminlogin";// view name
+		}
+		return "redirect:/adminlogin";
 	}
+
+	@RequestMapping("/reject/{id}")
+	//@ExceptionHandler({ CustomException.class })
+	public String updateRejectLoan(@PathVariable("id") int id) {
+		if(id != 0) {
+			this.userService.rejectLoan(id);
+			System.out.println("Reject Loan"+id);
+			return "redirect:/adminlogin";// view name
+		}
+		return "redirect:/adminlogin";
+		
+	}
+	
+	
+	
+	
 }

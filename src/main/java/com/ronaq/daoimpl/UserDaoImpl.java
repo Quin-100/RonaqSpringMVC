@@ -25,8 +25,10 @@ import com.ronaq.mapper.BenificiaryMapper;
 import com.ronaq.model.BeneficiaryData;
 import com.ronaq.model.Benificiary;
 import com.ronaq.model.Feedback;
+import com.ronaq.model.LoanApplication;
 import com.ronaq.model.LoanData;
 import com.ronaq.model.Login;
+import com.ronaq.model.SecurityQuestion;
 import com.ronaq.model.User;
 
 
@@ -405,6 +407,103 @@ public class UserDaoImpl implements IUserDao {
 		tx.commit();
 		session.close();
 		logger.info("Loan Application successfully done ="+ user);
+	}
+
+	public List<SecurityQuestion> getSecurityQuestions() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.openSession();
+		tx = session.beginTransaction();
+		Query query = session.createQuery("from SecurityQuestion order by questionId");
+				
+		List<SecurityQuestion> u = query.list();
+		//session.save(user);
+		tx.commit();
+		session.close();
+		logger.info("Security Questions ="+u);		
+		
+		if(u.size()>0) {			
+			return u;
+		}
+		else {
+			return null;
+		}
+	}
+
+	public boolean chkUserForForgotPassword(String email, String secques, String ans) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.openSession();
+		tx = session.beginTransaction();
+		Query query = session.createQuery("from User u where u.email=:email and u.securityQuestion=:secques and u.securityAnswer=:ans");
+		query.setString("email", email);
+		query.setString("secques", secques);
+		query.setString("ans", ans);
+		
+		List<User> u = query.list();
+		//session.save(user);
+		tx.commit();
+		session.close();
+		logger.info("User Details="+ email +" , "+ secques +" , "+ ans);		
+		
+		if(u.size()>0) {			
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public List<LoanApplication> getLoanApplications() {
+		// TODO Auto-generated method stub
+		List<LoanApplication> lstloan = new ArrayList<LoanApplication>();
+		
+		Session session = this.sessionFactory.openSession();
+		tx = session.beginTransaction();
+		Query query = session.createQuery("from LoanApplication order by applicationId");
+				
+		lstloan = query.list();
+		//session.save(user);
+		tx.commit();
+		session.close();
+		logger.info("Loan applications ="+lstloan);		
+		
+		if(lstloan.size()>0) {			
+			return lstloan;
+		}
+		else {
+			return lstloan;
+		}
+	}
+
+	public void approveLoan(int id) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.openSession();	
+		
+		tx = session.beginTransaction();
+		
+		LoanApplication loan = (LoanApplication) session.load(LoanApplication.class,id);
+		loan.setStatus("Approved");
+		//bid.setBidId(bidId);
+		//bid1 = bid;
+		session.saveOrUpdate(loan);
+		tx.commit();
+		session.close();
+		logger.info("Loan Details="+ loan );
+	}
+
+	public void rejectLoan(int id) {
+		// TODO Auto-generated method stub
+Session session = this.sessionFactory.openSession();	
+		
+		tx = session.beginTransaction();
+		
+		LoanApplication loan = (LoanApplication) session.load(LoanApplication.class,id);
+		loan.setStatus("Rejected");
+		//bid.setBidId(bidId);
+		//bid1 = bid;
+		session.saveOrUpdate(loan);
+		tx.commit();
+		session.close();
+		logger.info("Loan Details="+ loan);
 	}
 
 	

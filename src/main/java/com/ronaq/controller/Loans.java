@@ -93,6 +93,8 @@ public class Loans {
 				List<Account> lstAccounts = u.getLstAccount();
 				List<Transactions> lstTransactions = u.getLstTransaction();
 				
+				System.out.println("i am in calcReturnAmount --- "+u+" ----"+lstAccounts.get(0).getBalance()+"--"+lstTransactions.size());
+				
 				int cibil = calcCibil(lstAccounts.get(0).getBalance(),lstTransactions.size(),u.getDob());
 				
 				System.out.println("I am in process of loan applying-------with cibil :"+ cibil);
@@ -164,14 +166,14 @@ public class Loans {
 	
 	public int calcCibil(double balance, int lsttrans, String dob) {
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 		
 		//convert String to LocalDate
 		LocalDate db = LocalDate.parse(dob, formatter); //Birth date
 		 
 		LocalDate today = LocalDate.now(); 
 		 
-		Period p = Period.between(today, db);	 
+		Period p = Period.between(db, today);	 
 		
 		int age ;
 		if(p.getYears() != 0) {

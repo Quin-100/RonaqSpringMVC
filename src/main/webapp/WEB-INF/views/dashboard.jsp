@@ -45,6 +45,8 @@ prefix="form" %>
 </head>
 <body>
 <%-- <%@include file="header.jsp"%> --%>
+<c:url var="addActionLogin" value="/login" ></c:url>
+<c:url var="addActionLogout" value="/user/logout" ></c:url>
 <header id="header" style="background: #212529">
 			<div class="container">
 				<div class="logo" style="margin: -18px 0 0 15px"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="Ronaq"></a></div>

@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.ronaq.model.Benificiary;
 import com.ronaq.model.Feedback;
+import com.ronaq.model.LoanApplication;
 import com.ronaq.model.LoanData;
 import com.ronaq.model.Login;
+import com.ronaq.model.SecurityQuestion;
 import com.ronaq.model.User;
 
 public interface IUserDao {	
@@ -46,6 +48,16 @@ public interface IUserDao {
 	public LoanData getLoanById(int id);
 	
 	public void addLoanApplication(User user);
+	
+	public List<SecurityQuestion> getSecurityQuestions();
+	
+	public boolean chkUserForForgotPassword(String email,String secques,String ans);
+	
+	public List<LoanApplication> getLoanApplications();
+	
+	public void approveLoan(int id);
+	
+	public void rejectLoan(int id);
 	
 
 }

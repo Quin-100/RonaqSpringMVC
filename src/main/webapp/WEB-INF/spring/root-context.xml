@@ -40,6 +40,7 @@
 				 <value>com.ronaq.model.LoanData</value>
 				 <value>com.ronaq.model.Transactions</value>
 				 <value>com.ronaq.model.LoanApplication</value>
+				 <value>com.ronaq.model.SecurityQuestion</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

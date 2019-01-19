@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ronaq.dao.IUserDao;
 import com.ronaq.model.Benificiary;
 import com.ronaq.model.Feedback;
+import com.ronaq.model.LoanApplication;
 import com.ronaq.model.LoanData;
 import com.ronaq.model.Login;
+import com.ronaq.model.SecurityQuestion;
 import com.ronaq.model.User;
 import com.ronaq.service.IUserService;
 
@@ -130,6 +132,36 @@ public class UserServiceImpl implements IUserService{
 	public void addLoanApplication(User user) {
 		// TODO Auto-generated method stub
 		userDao.addLoanApplication(user);
+	}
+
+
+	public List<SecurityQuestion> getSecurityQuestions() {
+		// TODO Auto-generated method stub
+		return userDao.getSecurityQuestions();
+	}
+
+
+	public boolean chkUserForForgotPassword(String email, String secques, String ans) {
+		// TODO Auto-generated method stub
+		return userDao.chkUserForForgotPassword(email, secques, ans);
+	}
+
+
+	public List<LoanApplication> getLoanApplications() {
+		// TODO Auto-generated method stub
+		return userDao.getLoanApplications();
+	}
+
+
+	public void approveLoan(int id) {
+		// TODO Auto-generated method stub
+		userDao.approveLoan(id);
+	}
+
+
+	public void rejectLoan(int id) {
+		// TODO Auto-generated method stub
+		userDao.rejectLoan(id);
 	}
 
 }

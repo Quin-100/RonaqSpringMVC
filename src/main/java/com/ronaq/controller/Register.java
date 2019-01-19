@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.ronaq.model.Account;
+import com.ronaq.model.SecurityQuestion;
 import com.ronaq.model.User;
 import com.ronaq.service.IUserService;
 
@@ -37,6 +38,9 @@ public class Register {
 	@RequestMapping(value="/register")
 	public String loadregister(Model model) {
 		model.addAttribute("user", new User());
+		List<SecurityQuestion> lst = this.userService.getSecurityQuestions();
+		
+		model.addAttribute("securityquestions",lst);
 		//model.addAttribute("listState",getStateList());
 		return "register";
 	}
@@ -57,15 +61,22 @@ public class Register {
 			            u.setDob(formaDate.parse(dob));*/
 					
 					
-						List<Account> lstAccount = new ArrayList<Account>();
-						u.setLstAccount(lstAccount);
+						//List<Account> lstAccount = new ArrayList<Account>();
+						//u.setLstAccount(lstAccount);
 						Account acc = new Account();
-						acc.setUserdetails(u);
-						
+						acc.setUserdetails(u);						
 						acc.setAccountNo(acc.generateAccountNo());
+						
 						List<Account> lstAcc = new ArrayList<Account>();
 						lstAcc.add(acc);
+						
 						u.setLstAccount(lstAcc);
+						
+						//SecurityQuestion securityQuestion = new SecurityQuestion();
+						//securityQuestion.setUsers(u);
+						
+						System.out.println("Hello thier i want to get registered :"+u);
+						
 						boolean status = this.userService.chkUserForRegistration(u);
 						if(!status) {
 							this.userService.createUser(u);

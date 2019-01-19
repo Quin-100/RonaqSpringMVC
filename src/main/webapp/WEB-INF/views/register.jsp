@@ -162,6 +162,35 @@ prefix="form" %>
                                 </div>
                             </div>
                         </div>    
+                        <div class="row">
+                        	<div class="col-md-12">
+                        		<div class="form-group">                        		
+                                <form:select path="securityQuestion" cssClass="form-input">  
+                                	 <form:option selected="selected" value="1">What was your childhood nickname?</form:option>
+						                <form:option value="2">What is the name of your favorite childhood friend?</form:option>
+						                <form:option value="3">What was the second best birthday present you ever got?</form:option>
+						                <form:option value="4">In what city or town did your mother and father meet?</form:option>
+						                <form:option value="5">What was your favorite sport in high school?</form:option>
+						                <form:option value="6">Who is your childhood sports hero?</form:option>
+						                <form:option value="7">What was the name of the company where you had your first job?</form:option>
+						                <form:option value="8">What was the make and model of your first car?</form:option>
+						                <form:option value="9">What school did you attend for sixth grade?</form:option>                     
+						        </form:select>                                	
+                                <form:errors path="securityQuestion" cssClass="errors"></form:errors>   
+                        </div>
+                        	
+                        	</div>     
+                        </div>
+                        <div class="row">
+                        	<div class="col-md-12">                        		
+                        		<form:input path="securityAnswer" cssClass="form-input" placeholder="Enter your answer" />
+                                <form:errors path="securityAnswer" cssClass="errors"></form:errors> 
+                        	</div>     
+                        </div>
+                        <br><br>
+                        
+                        
+                        
                         <!-- <div class="row">
                         	<p>Upload your photo</p><input type="file" name="fileUpload" size="50" />
                         	<button href="doUpload">upload</button>
