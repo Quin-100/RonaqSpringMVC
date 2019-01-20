@@ -34,7 +34,9 @@ public class Dashboard {
 	@RequestMapping(value= {"/dashboard","/user/dashboard"})
 	public String loaddashboard(Model model,HttpSession session) {
 		//model.addAttribute("feedbackform", new Feedback());
-		User user = (User) session.getAttribute("userdetails");		
+		User user = (User) session.getAttribute("userdetails");	
+		model.addAttribute("user",user);
+		model.addAttribute("account",user.getLstAccount().get(0));
 		model.addAttribute("listTransaction",user.getLstTransaction());
 		model.addAttribute("listLoanApplication",user.getLstLoanApplications());
 		System.out.println(user.getLstTransaction());

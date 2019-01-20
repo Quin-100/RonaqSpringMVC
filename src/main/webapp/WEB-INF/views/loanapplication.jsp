@@ -16,6 +16,15 @@ prefix="form" %>
     <!-- Main css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">       
     
+        
+    <style>
+		.errors {
+			color: red;
+			font-style: italic;
+			font-weight: bold;
+		}
+	</style>
+    
 </head>
 <body>
 <c:url var="loanapplication" value="/user/loanapplication"></c:url>

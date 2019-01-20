@@ -25,7 +25,7 @@ import com.ronaq.service.IUserService;
 @Controller
 public class Services {
 
-	private IUserService userService;	
+	private IUserService userService;		
 	
 	@Autowired
 	public void setUserService(IUserService userService) {
@@ -43,10 +43,11 @@ public class Services {
 		return "transactions";
 	}
 	
+	
+	
 	@RequestMapping(value= {"/samebranch","user/samebranch"})
 	public String loadsamebranch(Model model,HttpSession session) {
-		User u = (User) session.getAttribute("userdetails");
-		System.out.println("Temp ......"+u);		
+		User u = (User) session.getAttribute("userdetails");		
 		if(session.getAttribute("userdetails") == null) {
 			System.out.println("You are not loggged in as a user");
 			return "redirect:/login";
@@ -151,18 +152,23 @@ public class Services {
 						User u = (User) session.getAttribute("userdetails"); 
 						if(u != null) {
 							List<Benificiary> lstBen = u.getBenList();
-							for (Benificiary benificiary2 : lstBen) {
-								if(benificiary2.compare(benificiary2, benificiary) == 0) {
-									System.out.println("Comparing value"+benificiary2.compare(benificiary2, benificiary));
-									System.out.println("Benificiary already exist..");
-									return "redirect:/transactions";
-								}
-							}						
-							
+							if(lstBen.size() > 0) {
+								for (Benificiary benificiary2 : lstBen) {
+									if(benificiary2.compare(benificiary2, benificiary) == 0) {
+										System.out.println("Comparing value"+benificiary2.compare(benificiary2, benificiary));
+										System.out.println("Benificiary already exist..");
+										return "redirect:/transactions";
+									}
+								}						
+							}
+								
 							lstBen.add(benificiary);
 							u.setBenList(lstBen);
 							this.userService.addUserBenificiary(u);							
 							System.out.println(session.getAttribute("userdetails"));
+							
+							
+							
 						}
 						else {
 							return "redirect:/login";
@@ -170,10 +176,15 @@ public class Services {
 						
 					}		
 					else {
+						
 						System.out.println("out of process of adding beficiary user does not exist :"+benificiary);
 					}
-					//return "redirect:/register";
 				}
+				else {
+						return "beneficiary";
+				}
+					//return "redirect:/register";
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

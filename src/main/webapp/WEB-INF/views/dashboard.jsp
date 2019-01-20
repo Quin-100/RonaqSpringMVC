@@ -110,9 +110,25 @@ Password :
 				<div class="modal-dialog" role="document">
 					<div class="modal-dialog modal-md">
 						<div class="modal-content">
-							<div class="modal-header">								
-								<img src="${pageContext.request.contextPath}/resources/images/logo_footer.png" style="width: 120px;" alt="logo" />
+							<div class="row">
+								<div class="col-md-4">
+									<div class="modal-header">								
+										<img src="${pageContext.request.contextPath}/resources/images/logo_footer.png" style="width: 120px;" alt="logo" />
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div style="float: right;margin: 10px 10px;">
+										<c:set var="user" value="${user}"></c:set>
+										<c:set var="account" value="${account}"></c:set>
+										
+										<p>Welcome ${user.name} ,</p>
+										<p>Account No : ${account.accountNo}</p>
+										<p>Balance : ${account.balance}</p>
+									</div>
+								</div>
+							
 							</div>
+							
 							<div class="modal-body">
 								<table class="table table-striped">
 									<thead>
@@ -168,7 +184,7 @@ Password :
 				<div class="modal bnr-modal fade" id="myModal1" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-dialog modal-md">
-							<div class="modal-content">
+							<div class="modal-content" style="width: fit-content;">
 								<div class="modal-header">									
 									<img src="${pageContext.request.contextPath}/resources/images/logo_footer.png" alt="logo" style="width: 120px;"/>
 								</div>

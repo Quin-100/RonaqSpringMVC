@@ -36,13 +36,6 @@ public class AboutUs {
 		return "aboutus";
 	}
 	
-	@RequestMapping(value="/info@gmail.com")
-	public String loadmail() {
-		//model.addAttribute("user", new User());
-		//model.addAttribute("listState",getStateList());
-		return "aboutus";
-	}
-	
 	// For add and update person both
 	@RequestMapping(value = "/user/feedback", method = RequestMethod.POST)
 	//@ExceptionHandler({ CustomException.class })

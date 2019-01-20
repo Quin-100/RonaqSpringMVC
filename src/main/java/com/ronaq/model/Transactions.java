@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="TRANSACTION_DETAILS")
@@ -25,6 +28,8 @@ public class Transactions {
     @JoinColumn(name="id", nullable=false)
     private User userdetails;
 	
+	//@NotEmpty(message="Amount is required.")
+	//@Pattern(regexp="[0-9]",message="Enter valid amount")
 	private double amount;
 	
 	private String extranote;	

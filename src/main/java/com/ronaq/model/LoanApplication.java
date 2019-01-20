@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="LOAN_APPLICATION")
@@ -18,6 +21,7 @@ public class LoanApplication {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int applicationId;
 	
+	@NotEmpty(message="Loan type is required")
 	private String loantype;
 	
 	private int repaylimit;

@@ -132,7 +132,7 @@ prefix="form" %>
 				</div>
                 <div class="row">
                 	<div id="cta" class="cta-footer col-md-12">
-                        <a href="javascript:" class="btn btn-primary rounded">More About Us</a>
+                        <a href="aboutus" class="btn btn-primary rounded">More About Us</a>
                         <p>Get a handfull experirnce in banking with us.</p>
                     </div>
                 </div>
@@ -141,12 +141,8 @@ prefix="form" %>
                     </div>
                     
                     <div class="col-md-6 text-right">
-                    	<ul class="social">
-                        	
-							<li><a href="javascript:"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="javascript:"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="javascript:"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="javascript:"><i class="fa fa-pinterest"></i></a></li>
+                    	<ul class="social">                        	
+						
                         </ul>
                     </div>
                 </div>

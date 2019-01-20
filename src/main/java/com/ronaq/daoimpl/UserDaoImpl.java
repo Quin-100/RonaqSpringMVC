@@ -52,9 +52,9 @@ public class UserDaoImpl implements IUserDao {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.openSession();
 		tx = session.beginTransaction();
-		Query query = session.createQuery("from User u where u.email=:email and u.acctype=:acctype");
+		Query query = session.createQuery("from User u where u.email=:email and u.password=:password");
 		query.setString("email", user.getEmail());
-		query.setString("acctype", user.getAcctype());
+		query.setString("password", user.getPassword());		
 		List<User> u = query.list();
 		//session.save(user);
 		tx.commit();

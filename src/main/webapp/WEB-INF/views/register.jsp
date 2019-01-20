@@ -31,6 +31,20 @@ prefix="form" %>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     
+    <script type="text/javascript">
+	    window.onload = function () {
+	        var pass = document.getElementById("password");
+	        var re_password = document.getElementById("re_password");
+	       	password.onchange = chkPassword;
+	       	re_password.onkeyup = chkPassword;
+	        function chkPassword() {
+	        	re_password.setCustomValidity("");
+	            if (password.value != re_password.value) {
+	            	re_password.setCustomValidity("Enter correct password.");
+	            }
+	        }
+	    }
+    </script>
 
     <script>
         $(document).ready(function(){
@@ -72,7 +86,7 @@ prefix="form" %>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                	<form:input path="pan" cssClass="form-input" placeholder="Pan card no." id="pan"/>
+                                	<form:input path="pan" cssClass="form-input" placeholder="Pan card no." id="pan" maxlength="10"/>
                                     <form:errors path="pan" cssClass="errors"></form:errors>
                                 </div>
                             </div>
@@ -80,7 +94,7 @@ prefix="form" %>
                         <div class="row">                        
                             <div class="col-md-6">
                                 <div class="form-group">
-                                	<form:input path="aadhar" cssClass="form-input" placeholder="Aadhar no." id="aadhar"/>
+                                	<form:input path="aadhar" cssClass="form-input" placeholder="Aadhar no." id="aadhar" maxlength="12"/>
                                     <form:errors path="aadhar" cssClass="errors"></form:errors>                                   
                                 </div>
                             </div>

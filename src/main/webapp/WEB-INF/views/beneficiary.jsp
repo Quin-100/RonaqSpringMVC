@@ -18,7 +18,13 @@ prefix="form" %>
     <!-- Main css -->    
     <!--  --><link href="${pageContext.request.contextPath}/resources/css/register.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
+    <style>
+		.errors {
+			color: red;
+			font-style: italic;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
 <c:url var="addAction" value="/user/addBeneficiary" ></c:url>
@@ -42,7 +48,7 @@ prefix="form" %>
                         <div class="row">                        
                             <div class="col-md-12">
                                 <div class="form-group">
-                                	<form:input path="accountno" cssClass="form-input" placeholder="Payee acoount no." id="pan"/>
+                                	<form:input path="accountno" cssClass="form-input" placeholder="Payee acoount no." id="pan" maxlength="12"/>
                                     <form:errors path="accountno" cssClass="errors"></form:errors>
                                 </div>
                             </div>                            

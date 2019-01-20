@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -39,17 +40,19 @@ public class User {
 	
 	@NotEmpty(message="PAN no is required")
 	@Size(min=10,max=10,message="Enter valid PAN no.")
+	@Pattern(regexp="[A-Z]{5}[0-9]{4}[A-Z]{1}",message="Enter valid PAN No.")
 	private String pan;
 	
 	@NotEmpty(message="AADHAR no is required")
 	@Size(min=12,max=12,message="Enter valid AADHAR no.")
+	@Pattern(regexp="[0-9]{12}",message="Enter valid AADHAR No.")
 	private String aadhar;
 	
 	@NotEmpty(message="Email is required")
 	@Email(message="Enter valid Email")
 	private String email;
 	
-	@NotEmpty(message="Email is required")
+	@NotEmpty(message="address is required")
 	private String address;
 	
 	@NotEmpty(message="DOB is required")

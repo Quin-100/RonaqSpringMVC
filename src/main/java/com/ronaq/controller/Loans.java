@@ -48,6 +48,24 @@ public class Loans {
 		return "loan";
 	}
 	
+	@RequestMapping(value= {"/calccibil","/user/calccibil"})
+	public String loadcibilscore(Model model, HttpSession session) {	
+		User u = (User) session.getAttribute("userdetails");		
+		if(session.getAttribute("userdetails") == null) {
+			System.out.println("You are not loggged in as a user");
+			return "redirect:/login";
+		}
+		else {
+			List<Account> lstAccounts = u.getLstAccount();
+			List<Transactions> lstTransactions = u.getLstTransaction();
+			System.out.println("I want to calculate cibil :"+lstAccounts + lstTransactions);
+			int cibil = calcCibil(lstAccounts.get(0).getBalance(),lstTransactions.size(),u.getDob());
+			System.out.println("I want to calculate cibil :"+cibil);
+			model.addAttribute("cibil",cibil);
+			return "cibil";
+		}
+	}
+	
 	@RequestMapping(value="/user/applyloan/{id}")
 	public String showEditPersonPage(
 			@PathVariable("id") int id, Model model,HttpSession session) {

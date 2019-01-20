@@ -52,17 +52,7 @@ public class Register {
 		try {
 			if (!result.hasErrors()) {			
 				if (u.getId() == null || u.getId() == 0) {
-						// new user, add it		
-						//User user = handleFileUpload(result, fileUpload, u);
-						//set date
-						/*Date formaDate = new SimpleDateFormat("dd/MM/yyyy").parse(u.getDob());
-			            String dob = formaDate.format(u.getDob());
-	
-			            u.setDob(formaDate.parse(dob));*/
-					
-					
-						//List<Account> lstAccount = new ArrayList<Account>();
-						//u.setLstAccount(lstAccount);
+						
 						Account acc = new Account();
 						acc.setUserdetails(u);						
 						acc.setAccountNo(acc.generateAccountNo());
@@ -70,10 +60,8 @@ public class Register {
 						List<Account> lstAcc = new ArrayList<Account>();
 						lstAcc.add(acc);
 						
-						u.setLstAccount(lstAcc);
+						u.setLstAccount(lstAcc);						
 						
-						//SecurityQuestion securityQuestion = new SecurityQuestion();
-						//securityQuestion.setUsers(u);
 						
 						System.out.println("Hello thier i want to get registered :"+u);
 						
@@ -83,36 +71,21 @@ public class Register {
 							return "redirect:/login";
 						}
 						else {
-							System.out.println("Already registered with same email and account type");
+							System.out.println("Already registered with same email and password for this account.");
 							return "redirect:/register";
 						}
 				} else {
-						// existing person, call update
-						//this.employeeDetailsService.updateEmployeeDetails(p);
+						
 				}
-				//return "redirect:/register";
+				
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//model.addAttribute("listEmployee", this.employeeDetailsService.getAllEmployeeDetails());
+		
 		return "register";
 
-	}			
-	
-    /*public User handleFileUpload(HttpServletRequest request,
-            @RequestParam CommonsMultipartFile[] fileUpload, User u) {
-          
-        if (fileUpload != null && fileUpload.length > 0) {
-            for (CommonsMultipartFile aFile : fileUpload){                  
-                System.out.println("Saving file: " + aFile.getOriginalFilename()); 
-                u.setPhoto(aFile.getBytes());                             
-            }
-        }  
-        return u;
-    }  */
-	
-	
+	}		
 }
 

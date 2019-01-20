@@ -15,6 +15,16 @@ prefix="form" %>
     <title>Ronaq | Transaction Form</title>
     <!-- Main css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    
+        
+    <style>
+		.errors {
+			color: red;
+			font-style: italic;
+			font-weight: bold;
+		}
+	</style>
+    
 </head>
 <body>
 <c:url var="doTransaction" value="/user/dotransaction"></c:url>

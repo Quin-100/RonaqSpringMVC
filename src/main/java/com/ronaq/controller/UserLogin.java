@@ -3,6 +3,7 @@ package com.ronaq.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,10 +38,11 @@ public class UserLogin {
 	
 	@RequestMapping(value = "/user/login")
 	//@ExceptionHandler({ CustomException.class })
-	public String loginPerson(@ModelAttribute("login") Login l,BindingResult result, Model model,HttpSession session) {
+	public String loginPerson(@ModelAttribute("login") @Valid Login l,BindingResult result, Model model,HttpSession session) {
 		try {
 			if (!result.hasErrors()) {			
 				if (l.getUsername().equals("sazuf@g.com") && l.getPassword().equals("123456")) {
+						//session
 						return "redirect:/adminlogin";
 						
 				} else {
@@ -48,10 +50,7 @@ public class UserLogin {
 					if(status) {
 						User u =  this.userService.findUserByEmail(l.getUsername());
 						System.out.println("I am the user u want "+u);
-						session.setAttribute("userdetails", u);
-						//session.setAttribute("username", l.getUsername());
-						//session.setAttribute("password", l.getPassword());
-						//System.out.println(session.getAttribute("username"));
+						session.setAttribute("userdetails", u);						
 						System.out.println(session.getAttribute("userdetails"));
 						return "redirect:/user/dashboard";
 					}
@@ -76,26 +75,11 @@ public class UserLogin {
 	//@ExceptionHandler({ CustomException.class })
 	public String logoutPerson(HttpSession session) {
 		try {
-				System.out.println("From Logut:"+session.getAttribute("userdetails"));
-				//System.out.println("From Logut:"+session.getAttribute("password"));		
+				System.out.println("From Logut:"+session.getAttribute("userdetails"));				
 				
-				session.invalidate();
+				session.invalidate();				
 				
-				
-				System.out.println("sesseion successfully invalidated");
-						// new user, add it		
-						//User user = handleFileUpload(result, fileUpload, u);
-						/*boolean status = this.userService.chkUserForLogin(l);
-						if(status) {
-							session.setAttribute("username", l.getUsername());
-							session.setAttribute("password", l.getPassword());
-							System.out.println(session.getAttribute("username"));
-							System.out.println(session.getAttribute("password"));
-							return "dashboard";
-						}
-						else {
-							return "login";
-						}*/			
+				System.out.println("sesseion successfully invalidated");						
 				
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

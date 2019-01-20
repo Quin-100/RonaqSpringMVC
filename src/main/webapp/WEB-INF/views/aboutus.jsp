@@ -141,13 +141,13 @@ prefix="form" %>
 											<form:errors path="name" cssClass="errors"></form:errors>
 											
 											<form:input path="email" name="email" placeholder="Email Address" required="Field is required"/>
-											<form:errors path="name" cssClass="errors"></form:errors>
+											<form:errors path="email" cssClass="errors"></form:errors>
 											
-											<form:input path="phone" name="phone" placeholder="Phone No" required="Field is required"/>
+											<form:input path="phone" name="phone" placeholder="Phone No" maxlength="10" required="Field is required"/>
 											<form:errors path="phone" cssClass="errors"></form:errors>											
 											
 											<form:textarea path="message" name="message" placeholder="Enter your Feedback here" required="Field is required"/>
-											<form:errors path="phone" cssClass="errors"></form:errors>	
+											<form:errors path="message" cssClass="errors"></form:errors>	
 											
 											<input type="submit" value="Submit" />
 											</form:form>
@@ -159,11 +159,10 @@ prefix="form" %>
 								<p> Vashi, Navi Mumbai, Maharashtra 400703</p>
 								<div class="number">
 									<h4>Phone</h4>
-									<p>022 2789 0192</p>
+									<p><a href="javascript:void(0)">022 2789 0192</a></p>
 								</div>
 								<h4>Email</h4>
-								<p><a href="info@gmail.com">MohammedQasim.Charolia@lntinfotech.com</a></p>
-								<p><a href="mailto:info@example.com">info@example1.com</a></p>
+								<p><a href="javascript:void(0)">ronaq.support@abc.com</a></p>
 							</div>
 					<div class="clearfix"></div>
 				</div>

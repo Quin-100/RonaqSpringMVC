@@ -46,12 +46,12 @@ prefix="form" %>
             <div class="container">
                 <div class="signup-content">
                 	<form:form action="${resetPasswordAction}" modelAttribute="user" cssClass="signup-form" id="signup-form">
-                		<h2 class="form-title">Create account</h2>   
+                		<h2 class="form-title">Reset Password</h2>   
                        
                         <div class="row">
                         	<div class="col-md-12">
                         		<div class="form-group">
-                                	<form:input path="password" cssClass="form-input" placeholder="Enter your password" id="email"/>
+                                	<form:input path="password" cssClass="form-input" placeholder="Enter your password" id="password"/>
                                     <form:errors path="password" cssClass="errors"></form:errors> 
                                 </div>                        	
                         	</div>

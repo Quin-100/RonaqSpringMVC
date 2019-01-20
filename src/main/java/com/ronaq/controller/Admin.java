@@ -2,13 +2,14 @@ package com.ronaq.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ronaq.model.LoanApplication;
 
@@ -34,7 +35,7 @@ public class Admin {
 		}
 		
 		model.addAttribute("loanlst", lstloan);
-		//model.addAttribute("listState",getStateList());
+		model.addAttribute("admindetails","suzaf");
 		return "adminHome";
 	}
 	
@@ -60,7 +61,24 @@ public class Admin {
 		
 	}
 	
-	
+	@RequestMapping(value = {"/admin/logout","/user"}, method = RequestMethod.GET)
+	//@ExceptionHandler({ CustomException.class })
+	public String logoutPerson(HttpSession session) {
+		try {
+				System.out.println("From admin Logut:"+session.getAttribute("admindetails"));				
+				
+				session.invalidate();				
+				
+				System.out.println("sesseion successfully invalidated");						
+				
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//model.addAttribute("listEmployee", this.employeeDetailsService.getAllEmployeeDetails());
+		return "redirect:/login";
+
+	}	
 	
 	
 }

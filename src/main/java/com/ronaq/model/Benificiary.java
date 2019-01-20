@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -31,6 +32,7 @@ public class Benificiary implements Comparator<Benificiary>{
 	private String acctype;
 	
 	@NotEmpty(message="Account No. is required")
+	@Size(min=12,max=12,message="Enter proper 12 digit ACCOUNT No")
 	private String accountno;
 	
 	@NotEmpty(message="Branch is required")

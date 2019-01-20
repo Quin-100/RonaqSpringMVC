@@ -70,7 +70,7 @@
 						<div class="service_text">
 							<p>Credit score determines your loan eligibility.Kindly check your score here before applying for loan.</p>
 						</div>
-						<div class="service_link"><a href="cibil">Read More</a></div>
+						<div class="service_link"><a href="calccibil">Read More</a></div>
 					</div>
 
 					<!-- Service -->
@@ -91,16 +91,6 @@
 							<p>With RONAQ get the most for your money. Free, fair and fast money transfers. </p>
 						</div>
 						<div class="service_link"><a href="transactions">Read More</a></div>
-					</div>
-
-					<!-- Service -->
-					<div class="service">
-						<div class="service_icon"><img src="${pageContext.request.contextPath}/resources/images/services/download.png" class="svg" alt=""></div>
-						<div class="service_title">Locate Branch</div>
-						<div class="service_text">
-							<p>Find your nearest RONAQ bank branch with our branch locator.</p>
-						</div>
-						<div class="service_link"><a href="#">Read More</a></div>
 					</div>
 				</div>
 			</div>

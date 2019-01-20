@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -23,10 +24,11 @@ public class Feedback {
 	private String name;
 	
 	@NotEmpty(message="Email is required")
-	@Email
+	@Email(message="Enter valid Email")
 	private String email;
 	
 	@NotEmpty(message="Phone no is required")
+	@Pattern(regexp="[1-9]{1}[0-9]{9}",message="Enter valid 10 digit phone no.")
 	private String phone;
 	
 	@NotEmpty(message="Feedback is required")

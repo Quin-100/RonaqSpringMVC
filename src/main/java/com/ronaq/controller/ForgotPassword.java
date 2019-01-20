@@ -2,6 +2,7 @@ package com.ronaq.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,7 @@ private IUserService userService;
 
 	@RequestMapping(value = "/user/forgotpassword")
 	//@ExceptionHandler({ CustomException.class })
-	public String chkUserInformation(@ModelAttribute("user") User u,BindingResult result, Model model,HttpSession session) {
+	public String chkUserInformation(@ModelAttribute("user") @Valid User u,BindingResult result, Model model,HttpSession session) {
 		try {					
 				 String email = u.getEmail();
 				 String secques = u.getSecurityQuestion();
@@ -69,7 +70,7 @@ private IUserService userService;
 	
 	@RequestMapping(value = "/user/resetpassword")
 	//@ExceptionHandler({ CustomException.class })
-	public String resetPassword(@ModelAttribute("user") User u,BindingResult result, Model model,HttpSession session) {
+	public String resetPassword(@ModelAttribute("user") @Valid User u,BindingResult result, Model model,HttpSession session) {
 		try {					
 				 String password = u.getPassword();
 				 User user = (User) session.getAttribute("user");
